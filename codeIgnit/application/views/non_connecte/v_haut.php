@@ -11,6 +11,7 @@ $this->load->helper('url');
 			<!--  lien css -->
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/menu.css">
+		<script src="script/menu_script.js"></script>
 
 	</head>
 

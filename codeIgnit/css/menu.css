@@ -34,7 +34,7 @@
 
 /* Left column (menu) */
 .left {
-  flex: 35%;
+  flex: 15%;
   padding: 15px 0;
 }
 
@@ -44,7 +44,7 @@
 
 /* Right column (page content) */
 .right {
-  flex: 65%;
+  flex: 85%;
   padding: 15px;
 }
 
@@ -74,4 +74,8 @@
 
 #myMenu li a:hover {
   background-color: #eee;
+}
+
+.center{
+  margin-left : 40%;
 }
