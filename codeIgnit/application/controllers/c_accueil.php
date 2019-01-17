@@ -23,6 +23,35 @@ class c_accueil extends CI_Controller{
 
 	}
 
+	function connexion(){
+		/* CHARGMENT */
+	//	$this->load->model('modele_connexion');
+		$this->load->library('form_validation');
+
+		/* REGLES  FORMULAIRE */
+		$this->form_validation->set_rules('login','Login', 'required');
+		$this->form_validation->set_rules('mdp','Mot de passe', 'required');
+
+		if($this->form_validation->run() == TRUE){
+			session_start();
+			$login = $this->input->post('login');
+			$mdp = $this->input->post('mdp');
+			echo $login." ".$mdp;
+		}
+		else{
+			$this->deconnexion();
+		}
+	}
+
+	function deconnexion(){
+		if(isset($_SESSION)){
+			foreach ($_SESSION as $key => $value) {
+				$_SESSION[$key] = null;
+			}
+			session_destroy();
+		}
+		$this->index();
+	}
 
 
 }

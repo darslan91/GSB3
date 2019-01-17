@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   echo "Login";
   echo br();
-  echo form_input('email');
+  echo form_input('login');
   echo br();
 
   echo "Mot de passe";
