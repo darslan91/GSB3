@@ -19,4 +19,5 @@
 .vertical-menu a.active {
   background-color: #4CAF50; /* Add a green color to the "active/current" link */
   color: white;
+  display: block; /* Make the links appear below each other */
 }

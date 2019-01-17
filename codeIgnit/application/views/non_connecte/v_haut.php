@@ -13,4 +13,7 @@ $this->load->helper('url');
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/menu.css">
 	
 	</head>
+	
 	<body>
+	
+		<div id="container">
