@@ -7,13 +7,13 @@ $this->load->helper('url');
 	<head>
 		<meta charset="utf-8">
 		<title>La vue</title>
-		
+
 			<!--  lien css -->
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/menu.css">
-	
+
 	</head>
-	
+
 	<body>
-	
+
 		<div id="container">
