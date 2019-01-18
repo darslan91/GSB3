@@ -15,7 +15,7 @@ $this->load->helper('url');
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/menu.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/tableau.css">
-		<script src="script/menu_script.js"></script>
+		<script src="<?php echo base_url(); ?>script/menu_script.js"></script>
 		
 	</head>
 
