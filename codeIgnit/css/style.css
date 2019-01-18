@@ -5,10 +5,11 @@
 
 		body {
 			background-color: #fff;
-			margin: 40px;
+			margin-top: 40px;
 			font: 13px/20px normal Helvetica, Arial, sans-serif;
 			color: #4F5155;
 			padding : 0% 15%;
+			transition : 0.5s;
 		}
 
 		a {
@@ -52,9 +53,10 @@
 		}
 
 		#container {
-			margin: 10px;
 			border: 1px solid #D0D0D0;
 			box-shadow: 0 0 8px #D0D0D0;
+			width : 100%;
+			padding: 5px 5px 5px 5px;
 		}
 		.cote{
 			display : inline;
@@ -103,4 +105,26 @@
 
 		.center{
 			position: relative;
+		}
+		
+		@media only screen and (max-width:1600px) {
+		 	body {
+		 		background-color: #fff;
+				margin-top: 40px;
+				font: 13px/20px normal Helvetica, Arial, sans-serif;
+				color: #4F5155;
+				padding : 0% 5%;
+				transition : 0.5s;
+			}
+		}
+		
+		@media only screen and (max-width:1250px) {
+		 	body {
+		 		background-color: #fff;
+				margin-top: 40px;
+				font: 13px/20px normal Helvetica, Arial, sans-serif;
+				color: #4F5155;
+				padding : 0% 0%;
+				transition : 0.5s;
+			}
 		}

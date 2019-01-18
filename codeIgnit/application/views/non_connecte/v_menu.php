@@ -11,7 +11,7 @@ $this->load->helper('url');
     <h2>Menu</h2>
     <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
     <ul id="myMenu">
-		<li><?php echo anchor('controleur_accueil','Accueil', 'style="background-color: #4CAF50; color: white;"'); ?></li>
+		<li><?php echo anchor('controleur_accueil','Accueil', 'style="background-color: #A9BCF5; color: white;"'); ?></li>
      	<li><?php echo anchor('','Lien1'); ?></li>
 		<li><?php echo anchor('','Lien2'); ?></li>
 		<li><?php echo anchor('','Lien3'); ?></li>

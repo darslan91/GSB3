@@ -7,15 +7,17 @@ $this->load->helper('url');
 <p>Bienvenue a vous : </p>
 
 <div class="row">
-  <div class="left" style="background-color:#bbb;">
+  <div class="left" style="background-color:#D8D8D8;">
     <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Recherche.." title="Type in a category">
     <ul id="myMenu">
-		<li><?php echo anchor('c_accueil','Accueil', 'style="background-color: #4CAF50; color: white;"'); ?></li>
+		<li><?php echo anchor('c_connecte/index','Accueil', 'style="background-color: #5858FA; color: white;"'); ?></li>
+		<li><?php echo anchor('c_connecte/tableau','Tableau'); ?></li>
       	<li><?php echo anchor('','Lien1'); ?></li>
   		<li><?php echo anchor('','Lien2'); ?></li>
+  		<li><?php echo anchor('','Lien3'); ?></li>
   		<li><?php echo anchor('','Lien3'); ?></li>
   		<li><?php echo anchor('c_accueil/deconnexion','Deconnexion'); ?></li>
     </ul>
   </div>
 
-  <div class="right" style="background-color:#ddd;">
+  <div class="right" style="background-color:#F2F2F2;">
