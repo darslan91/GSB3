@@ -2,8 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <div style="overflow-x:auto;">
-    <table>
-        <tr>
+    <table class="table">
+        <tr class="table">
             <th>First Name</th>
             <th>Last Name</th>
             <th>Points</th>
