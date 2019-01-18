@@ -12,7 +12,7 @@ $this->load->helper('url');
     <ul id="myMenu">
 		<li><?php echo anchor('c_connecte/index','Accueil', 'style="background-color: #5858FA; color: white;"'); ?></li>
 		<li><?php echo anchor('c_connecte/tableau','Tableau'); ?></li>
-      	<li><?php echo anchor('','Lien1'); ?></li>
+      	<li><?php echo anchor('c_compte/index','Compte-Rendu'); ?></li>
   		<li><?php echo anchor('','Lien2'); ?></li>
   		<li><?php echo anchor('','Lien3'); ?></li>
   		<li><?php echo anchor('','Lien3'); ?></li>
