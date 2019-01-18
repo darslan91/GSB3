@@ -22,7 +22,8 @@ class c_accueil extends CI_Controller{
 
 
 	}
-
+    
+	   //Fonction de connexion
 	function connexion(){
 		/* CHARGMENT */
 	//	$this->load->model('modele_connexion');
@@ -36,13 +37,17 @@ class c_accueil extends CI_Controller{
 			session_start();
 			$login = $this->input->post('login');
 			$mdp = $this->input->post('mdp');
-			echo $login." ".$mdp;
+		//	echo $login." ".$mdp;
+//			if(getUser($login, $mdp)){
+		      $this->connecter();
+//		    }
 		}
 		else{
 			$this->deconnexion();
 		}
 	}
-
+    
+	   //Fonction de déconnexion
 	function deconnexion(){
 		if(isset($_SESSION)){
 			foreach ($_SESSION as $key => $value) {
@@ -52,6 +57,12 @@ class c_accueil extends CI_Controller{
 		}
 		$this->index();
 	}
-
+    
+	   //Fonction connecté
+	function connecter(){
+	    $this->load->view('connecte/v_haut');
+	    $this->load->view('connecte/v_menu');
+	    $this->load->view('connecte/v_bas');
+	}
 
 }
