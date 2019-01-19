@@ -38,6 +38,14 @@ class c_compte extends CI_Controller{
         $this->load->helper('html');
         $this->load->helper('form');
         $this->load->library('form_validation');
+        $this->load->model('modele_thibault');
+        
+            //Récupération id
+        $this->load->library('session');
+        $idVisArray = $this->session->idVis;
+        foreach ($idVisArray as $key){
+            $idVis = $key->vis_matricule;
+        }
         
             //Haut + menu
         $this->load->view('connecte/v_haut');
@@ -51,25 +59,29 @@ class c_compte extends CI_Controller{
         
         if($personne == 'Tous' && $anne == 'Tous'){
             echo 'les deux tous';
-            $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu');
+            $data['rapport'] = $this->modele_thibault->getLesVisites($idVis);
+            $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu', $data);
         }
         if($personne == 'Tous' && $anne != 'Tous'){
             echo 'personne : '.$personne;
             echo br();
             echo 'anne : '.$anne;
-            $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu');
+            $data['rapport'] = $this->modele_thibault->getLesVisites($idVis);
+            $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu', $data);
         }
         if($personne != 'Tous' && $anne == 'Tous'){
             echo 'personne : '.$personne;
             echo br();
             echo 'anne : '.$anne;
-            $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu');
+            $data['rapport'] = $this->modele_thibault->getLesVisites($idVis);
+            $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu', $data);
         }
         if($personne != 'Tous' && $anne != 'Tous'){
             echo 'personne : '.$personne;
             echo br();
             echo 'anne : '.$anne;
-            $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu');
+            $data['rapport'] = $this->modele_thibault->getLesVisites($idVis);
+            $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu', $data);
         }
         
         
