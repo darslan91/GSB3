@@ -6,21 +6,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div style="overflow-x:auto;" class="compte-rendu">
     <table class="table">
         <tr class="table">
-            <th>First Name</th>
+            <th>Rapport de visite</th>
+            <th>Motif Visite</th>
+            <th>Nom Practicien</th>
+            <th>Date Visite</th>
             <th>Voir le Detail</th>
         </tr>
+        <?php
+        foreach ($rapport as $key){
+        ?>
         <tr>
-            <td>Jill</td>
-            <td><?php echo anchor('c_compte/detail','X'); ?></td>
+        	<td><?php echo $key->rap_num?></td>
+        	<td><?php echo $key->rap_motif?></td>
+        	<td><?php echo $key->pra_nom?></td>
+        	<td><?php echo $key->rap_date?></td>
+        	<td><?php echo anchor('c_compte/detail','X'); ?></td>
         </tr>
-        <tr>
-       		<td>Eve</td>
-       		<td><?php echo anchor('','X'); ?></td>
-        </tr>
-        <tr>
-            <td>Adam</td>
-            <td><?php echo anchor('','X'); ?></td>
-        </tr>
+        <?php } ?>
     </table>
     
     	<!-- Champs de recherche -->
