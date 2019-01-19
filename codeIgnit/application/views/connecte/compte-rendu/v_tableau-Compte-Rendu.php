@@ -33,13 +33,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           //    echo form_dropdown('personne', array('tous','1','2'), set_value('Tous', 'un', 'deux'));
             ?>
                 <select name="anne">
-                	<option value="">2018</option>
-                	<option value="">2017</option>
-                	<option value="">2016</option>
+                	<option value="Tous">Indefinie</option>
+                	<option value="2018">2018</option>
+                	<option value="2017">2017</option>
                 </select>
                 
             	<select name="personne">
-                	<option value="Tous">Tous</option>
+                	<option value="Tous">Indefinie</option>
                 	<option value="un">1</option>
                 	<option value="deux">2</option>
                 </select>   	
