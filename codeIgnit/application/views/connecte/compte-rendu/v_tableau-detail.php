@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
         <?php foreach ($detail as $key){?>
         <tr>
-        	<td><?php echo $key->rap_date?></td>
+        	<td><?php echo substr($key->rap_date, 0, 10)?></td>
         	<td><?php echo $key->rap_motif?></td>
         	<td><?php echo $key->pra_nom?></td>
         	<td><?php echo $key->pra_prenom?></td>
