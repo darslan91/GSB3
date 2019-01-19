@@ -99,7 +99,7 @@
 }
 
 .tablink:hover {
-  background-color: #777;
+  background-color: #5858FA;
 }
 
 .marg3{
@@ -121,7 +121,7 @@
 
 @media only screen and (max-width:1420px) {
  	.tablink {
- 		background-color: #555;
+ 		background-color: #5858FA;
 	  	color: white;
 	  	border: none;
 	  	outline: none;
