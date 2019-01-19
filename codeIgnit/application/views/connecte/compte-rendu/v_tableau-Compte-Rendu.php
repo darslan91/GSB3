@@ -39,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <td style="border: 1px solid grey;">Anne</td>
                     <td style="border: 1px solid grey;">Nom</td>
                     <td style="border: 1px solid grey;">Limite</td> 
-                    <td style="border: 1px solid grey;"></td>
+                    <td style="border: 1px solid grey;">Valider</td>
                 </tr>
                 <tr>
                     <td style="border: 1px solid grey;">
