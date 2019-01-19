@@ -4,7 +4,6 @@ $this->load->helper('url');
 ?>
 
 <h2>Vous etes Connecte</h2>
-<p>Bienvenue a vous : </p>
 
 <div class="row">
   <div class="left" style="background-color:#D8D8D8;">

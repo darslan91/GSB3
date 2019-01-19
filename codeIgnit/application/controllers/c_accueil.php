@@ -39,14 +39,17 @@ class c_accueil extends CI_Controller{
 		    }
 			$login = $this->input->post('login');
 			$mdp = $this->input->post('mdp');
-//			if(getUser($login, $mdp)){
-			     session_start();
+			$data['query'] = $this->modele_connexion->userExist($login, $mdp);
+			$nb = count($data['query']);
+			if($nb != 0){
+			     $this->load->library('session');
 			     $_SESSION['connecte']=true;
-			     $login = null;
-			     $mdp = null;
+			     $_SESSION['idVis'] = $this->modele_connexion->getUserId($login, $mdp);
 			     $this->connecter();
-		      
-//		    }
+		    }
+		    else{
+		        $this->deconnexion();
+		    }
 		}
 		else{
 			$this->deconnexion();

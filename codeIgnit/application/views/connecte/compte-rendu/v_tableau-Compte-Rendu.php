@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         	<td><?php echo $key->rap_motif?></td>
         	<td><?php echo $key->pra_nom?></td>
         	<td><?php echo $key->rap_date?></td>
-        	<td><?php echo anchor('c_compte/detail','X'); ?></td>
+        	<td><?php echo anchor('c_compte/detail/'.$key->rap_num.'','X'); ?></td>
         </tr>
         <?php } ?>
     </table>

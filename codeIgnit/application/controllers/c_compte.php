@@ -11,14 +11,21 @@ class c_compte extends CI_Controller{
         $this->load->library('form_validation');
         $this->load->model('modele_thibault');
         
+            //Récupération id
+        $this->load->library('session');
+        $idVisArray = $this->session->idVis;
+        foreach ($idVisArray as $key){
+            $idVis = $key->vis_matricule;
+        }
+        
             //Haut + menu
         $this->load->view('connecte/v_haut');
         $this->load->view('connecte/v_menu');
         $this->load->view('connecte/compte-rendu/v_titre');
         $this->load->view('connecte/compte-rendu/v_menu_compte-rendu');
         
-            //Coprs
-        $data['rapport'] = $this->modele_thibault->getLesVisites();
+            //Corps
+        $data['rapport'] = $this->modele_thibault->getLesVisites($idVis);
         $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu', $data);
              
             //Bas
@@ -110,12 +117,13 @@ class c_compte extends CI_Controller{
         $this->load->view('connecte/v_bas');
     }
     
-    function detail(){
+    function detail($id){
         /* CHARGEMENT */
             //Helper
         $this->load->helper('html');
         $this->load->helper('form');
         $this->load->library('form_validation');
+        $this->load->model('modele_thibault');
         
             //Haut + menu
         $this->load->view('connecte/v_haut');
@@ -124,8 +132,8 @@ class c_compte extends CI_Controller{
         $this->load->view('connecte/compte-rendu/v_menu_compte-rendu');
         
             //Corps
-        $this->load->view('connecte/compte-rendu/v_titre');
-        $this->load->view('connecte/compte-rendu/v_tableau-detail');
+        $data['detail'] = $this->modele_thibault->getLaVisite($id);
+        $this->load->view('connecte/compte-rendu/v_tableau-detail', $data);
         
             //Bas
         $this->load->view('connecte/v_bas');
