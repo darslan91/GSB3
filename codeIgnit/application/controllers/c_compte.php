@@ -125,6 +125,13 @@ class c_compte extends CI_Controller{
         $this->load->library('form_validation');
         $this->load->model('modele_thibault');
         
+            //id récupération
+        $this->load->library('session');
+        $idVisArray = $this->session->idVis;
+        foreach ($idVisArray as $key){
+            $idVis = $key->vis_matricule;
+        }
+        
             //Haut + menu
         $this->load->view('connecte/v_haut');
         $this->load->view('connecte/v_menu');
@@ -132,7 +139,7 @@ class c_compte extends CI_Controller{
         $this->load->view('connecte/compte-rendu/v_menu_compte-rendu');
         
             //Corps
-        $data['detail'] = $this->modele_thibault->getLaVisite($id);
+        $data['detail'] = $this->modele_thibault->getLaVisite($id, $idVis);
         $this->load->view('connecte/compte-rendu/v_tableau-detail', $data);
         
             //Bas

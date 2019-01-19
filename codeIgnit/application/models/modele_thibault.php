@@ -15,12 +15,12 @@ class modele_thibault extends CI_Model{
         return $query;
     }
     
-    public function getLaVisite($id){
+    public function getLaVisite($id, $idVis){
         $req = "SELECT rap_num, rap_date, rap_motif, pra_nom, pra_prenom, pra_adresse, pra_cp, pra_ville, pra_coefnotoriete, typ_libelle ".
                "FROM rapport_visite,  praticien, engine_praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND praticien.typ_code = engine_praticien.typ_code ".
-               "AND vis_matricule = 'a131' ".
+               "AND vis_matricule = '$idVis' ".
                "AND rap_num = ".$id;
         $query = $this->db->query($req)->result();
         return $query;
