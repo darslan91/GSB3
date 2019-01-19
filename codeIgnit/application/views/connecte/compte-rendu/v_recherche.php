@@ -1,6 +1,4 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-
-  <h3>Nouveau</h3>
-
+  <h3>Recherche d'un Compte-Rendu</h3>

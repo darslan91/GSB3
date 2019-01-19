@@ -83,3 +83,53 @@
 .center{
   margin-left : 40%;
 }
+
+
+.tablink {
+  background-color: #555;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 33.1%;
+  transition: 0.5s;
+  text-decoration: none;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+.marg3{
+	margin-bottom: 3px;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: grey;
+  display: none;
+  padding: 3px 0px;
+  height: 100%;
+}
+
+#Home {background-color: red;}
+#News {background-color: green;}
+#Contact {background-color: blue;}
+#About {background-color: orange;}
+
+@media only screen and (max-width:1420px) {
+ 	.tablink {
+ 		background-color: #555;
+	  	color: white;
+	  	border: none;
+	  	outline: none;
+	  	cursor: pointer;
+	  	padding: 14px 16px;
+	  	font-size: 17px;
+	  	width: 100%;
+	  	margin-bottom: 3px;
+	  	transition: 0.5s;
+	}
+}

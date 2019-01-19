@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 	<!-- Affichage du tableau -->
+<h3>Tous les Comptes-Rendus</h3>
 <div style="overflow-x:auto;" class="compte-rendu">
     <table class="table">
         <tr class="table">
@@ -27,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php
           echo validation_errors();
             echo br();
-            echo form_open('c_compte/recherche', $_POST);
+            echo form_open('c_compte/rechercheImpressise', $_POST);
             
           //    echo form_dropdown('personne', array('tous','1','2'), set_value('Tous', 'un', 'deux'));
             ?>

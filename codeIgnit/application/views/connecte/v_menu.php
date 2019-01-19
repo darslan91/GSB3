@@ -8,7 +8,7 @@ $this->load->helper('url');
 
 <div class="row">
   <div class="left" style="background-color:#D8D8D8;">
-    <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Recherche.." title="Type in a category">
+    <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Recherche..." title="Type in a category">
     <ul id="myMenu">
 		<li><?php echo anchor('c_connecte/index','Accueil', 'style="background-color: #5858FA; color: white;"'); ?></li>
 		<li><?php echo anchor('c_connecte/tableau','Tableau'); ?></li>

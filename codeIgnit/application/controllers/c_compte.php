@@ -13,20 +13,18 @@ class c_compte extends CI_Controller{
             //Haut + menu
         $this->load->view('connecte/v_haut');
         $this->load->view('connecte/v_menu');
+        $this->load->view('connecte/compte-rendu/v_titre');
+        $this->load->view('connecte/compte-rendu/v_menu_compte-rendu');
         
             //Coprs
-        $this->load->view('connecte/compte-rendu/v_titre');
         $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu');
-        $this->load->view('connecte/compte-rendu/v_nouveau');
+             
             //Bas
-            
         $this->load->view('connecte/v_bas');
     }
     
-    function recherche(){
-        /*CHARGEMENT*/
-        $this->load->library('form_validation');
-        
+    function rechercheImpressise(){
+        /* CHARGEMENT */
             //Helper
         $this->load->helper('html');
         $this->load->helper('form');
@@ -35,20 +33,54 @@ class c_compte extends CI_Controller{
             //Haut + menu
         $this->load->view('connecte/v_haut');
         $this->load->view('connecte/v_menu');
+        $this->load->view('connecte/compte-rendu/v_titre');
+        $this->load->view('connecte/compte-rendu/v_menu_compte-rendu');
         
             //Coprs
+        $personne = $this->input->post('personne');
+        $anne = $this->input->post('anne');
+        var_dump($personne, $anne);
+        $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu');
+        
+        //Bas
+        $this->load->view('connecte/v_bas');
+    }
+    
+    function nouveau(){
+        /* CHARGEMENT */
+            //Helper
+        $this->load->helper('html');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        
+            //Haut + menu
+        $this->load->view('connecte/v_haut');
+        $this->load->view('connecte/v_menu');
         $this->load->view('connecte/compte-rendu/v_titre');
-            
-        var_dump($this->input->post('personne'));
-        var_dump($this->input->post('anne'));
-            
-            //méthode d'affichage avec toutes les personnes dans le tableau - Sinon on affiche juste la personne selectionné
-        if($this->input->post('personne') == 'Tous'){
-           $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu');
-        }
-        else{
-           $this->load->view('connecte/tableau');
-        }
+        $this->load->view('connecte/compte-rendu/v_menu_compte-rendu');
+        
+            //Coprs
+        $this->load->view('connecte/compte-rendu/v_nouveau');
+        
+            //Bas
+        $this->load->view('connecte/v_bas');
+    }
+    
+    function recherche(){
+        /* CHARGEMENT */
+            //Helper
+        $this->load->helper('html');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        
+            //Haut + menu
+        $this->load->view('connecte/v_haut');
+        $this->load->view('connecte/v_menu');
+        $this->load->view('connecte/compte-rendu/v_titre');
+        $this->load->view('connecte/compte-rendu/v_menu_compte-rendu');
+        
+            //Coprs
+        $this->load->view('connecte/compte-rendu/v_recherche');
         
             //Bas
         $this->load->view('connecte/v_bas');
@@ -56,8 +88,6 @@ class c_compte extends CI_Controller{
     
     function detail(){
         /* CHARGEMENT */
-        $this->load->library('form_validation');
-        
             //Helper
         $this->load->helper('html');
         $this->load->helper('form');
@@ -66,6 +96,8 @@ class c_compte extends CI_Controller{
             //Haut + menu
         $this->load->view('connecte/v_haut');
         $this->load->view('connecte/v_menu');
+        $this->load->view('connecte/compte-rendu/v_titre');
+        $this->load->view('connecte/compte-rendu/v_menu_compte-rendu');
         
             //Corps
         $this->load->view('connecte/compte-rendu/v_titre');
@@ -73,10 +105,6 @@ class c_compte extends CI_Controller{
         
             //Bas
         $this->load->view('connecte/v_bas');
-    }
-    
-    function nouveau(){
-        
     }
     
 }

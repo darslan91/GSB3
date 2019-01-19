@@ -34,12 +34,20 @@ class c_accueil extends CI_Controller{
 		$this->form_validation->set_rules('mdp','Mot de passe', 'required');
 
 		if($this->form_validation->run() == TRUE){
-			session_start();
+		    if(isset($login, $mdp)){
+		        if($login == null || $mdp == null){
+		          $this->deconnexion();
+		        }
+		    }
 			$login = $this->input->post('login');
 			$mdp = $this->input->post('mdp');
-		//	echo $login." ".$mdp;
 //			if(getUser($login, $mdp)){
-		      $this->connecter();
+			     session_start();
+			     $_SESSION['connecte']=true;
+			     $login = null;
+			     $mdp = null;
+			     $this->connecter();
+		      
 //		    }
 		}
 		else{
