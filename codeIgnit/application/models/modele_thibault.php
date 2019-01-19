@@ -10,7 +10,18 @@ class modele_thibault extends CI_Model{
     public function getLesVisites($idVis){
         $req = "SELECT rap_num, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
-               "AND vis_matricule = '$idVis'";
+               "AND vis_matricule = '$idVis' ".
+               "ORDER BY rap_num DESC";
+        $query = $this->db->query($req)->result();
+        return $query;
+    }
+
+    public function getLesVisitesL($idVis, $limit){
+        $req = "SELECT rap_num, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
+               "WHERE rapport_visite.pra_num = praticien.pra_num ".
+               "AND vis_matricule = '$idVis' ".
+               "ORDER BY rap_num DESC ".
+               "limit ".$limit;
         $query = $this->db->query($req)->result();
         return $query;
     }
@@ -21,16 +32,19 @@ class modele_thibault extends CI_Model{
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND praticien.typ_code = engine_praticien.typ_code ".
                "AND vis_matricule = '$idVis' ".
-               "AND rap_num = ".$id;
+               "AND rap_num = ".$id.
+               "ORDER BY rap_num DESC ";
         $query = $this->db->query($req)->result();
         return $query;
     }
     
     public function getLesVisitesAnne($idVis, $anne){
-        $req = "SELECT rap_num, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
+        $req = "SELECT rap_num, rap_date, rap_motif, pra_nom ".
+               "FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND vis_matricule = '$idVis' ".
-               "AND rap_date LIKE '$anne%'";
+               "AND rap_date LIKE '$anne%' ".
+               "ORDER BY rap_num DESC ";
         $query = $this->db->query($req)->result();
         return $query;
     }
@@ -39,7 +53,8 @@ class modele_thibault extends CI_Model{
       $req = "SELECT rap_num, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND vis_matricule = '$idVis' ".
-               "AND pra_nom LIKE '$nom%'";
+               "AND pra_nom LIKE '$nom%' ".
+               "ORDER BY rap_num DESC ";
         $query = $this->db->query($req)->result();
         return $query;
     }
@@ -49,7 +64,8 @@ class modele_thibault extends CI_Model{
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND vis_matricule = '$idVis' ".
                "AND pra_nom LIKE '$nom%' ".
-               "AND rap_date LIKE '$anne%'";
+               "AND rap_date LIKE '$anne%' ".
+               "ORDER BY rap_num DESC ";
         $query = $this->db->query($req)->result();
         return $query;
     }

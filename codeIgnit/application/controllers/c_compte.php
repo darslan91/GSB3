@@ -56,21 +56,22 @@ class c_compte extends CI_Controller{
             //Coprs
         $personne = $this->input->post('personne');
         $anne = $this->input->post('anne');
+        $limit = $this->input->post('limit');
         
         if($personne == 'Tous' && $anne == 'Tous'){
-            $data['rapport'] = $this->modele_thibault->getLesVisites($idVis);
+            $data['rapport'] = $this->modele_thibault->getLesVisitesL($idVis, $limit);
             $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu', $data);
         }
         if($personne == 'Tous' && $anne != 'Tous'){
-            $data['rapport'] = $this->modele_thibault->getLesVisitesAnne($idVis, $anne);
+            $data['rapport'] = $this->modele_thibault->getLesVisitesAnne($idVis, $anne, $limit);
             $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu', $data);
         }
         if($personne != 'Tous' && $anne == 'Tous'){
-            $data['rapport'] = $this->modele_thibault->getLesVisitesNom($idVis, $personne);
+            $data['rapport'] = $this->modele_thibault->getLesVisitesNom($idVis, $personne, $limit);
             $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu', $data);
         }
         if($personne != 'Tous' && $anne != 'Tous'){
-            $data['rapport'] = $this->modele_thibault->getLesVisitesAnneNom($idVis, $personne, $anne);
+            $data['rapport'] = $this->modele_thibault->getLesVisitesAnneNom($idVis, $personne, $anne, $limit);
             $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu', $data);
         }
         
