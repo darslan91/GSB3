@@ -13,8 +13,6 @@ class c_accueil extends CI_Controller{
 		/* AFFICHAGE */
 			//Haut
 		$this->load->view('non_connecte/v_haut');
-			//Menu
-//		$this->load->view('non_connecte/v_menu');
 			//Contents
 		$this->load->view('non_connecte/v_formulaire-connexion');
 			//Bas
@@ -26,7 +24,7 @@ class c_accueil extends CI_Controller{
 	   //Fonction de connexion
 	function connexion(){
 		/* CHARGMENT */
-	//	$this->load->model('modele_connexion');
+		$this->load->model('modele_connexion');
 		$this->load->library('form_validation');
 
 		/* REGLES  FORMULAIRE */

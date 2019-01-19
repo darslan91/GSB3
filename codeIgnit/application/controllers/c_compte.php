@@ -39,8 +39,30 @@ class c_compte extends CI_Controller{
             //Coprs
         $personne = $this->input->post('personne');
         $anne = $this->input->post('anne');
-        var_dump($personne, $anne);
-        $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu');
+        
+        if($personne == 'Tous' && $anne == 'Tous'){
+            echo 'les deux tous';
+            $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu');
+        }
+        if($personne == 'Tous' && $anne != 'Tous'){
+            echo 'personne : '.$personne;
+            echo br();
+            echo 'anne : '.$anne;
+            $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu');
+        }
+        if($personne != 'Tous' && $anne == 'Tous'){
+            echo 'personne : '.$personne;
+            echo br();
+            echo 'anne : '.$anne;
+            $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu');
+        }
+        if($personne != 'Tous' && $anne != 'Tous'){
+            echo 'personne : '.$personne;
+            echo br();
+            echo 'anne : '.$anne;
+            $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu');
+        }
+        
         
         //Bas
         $this->load->view('connecte/v_bas');

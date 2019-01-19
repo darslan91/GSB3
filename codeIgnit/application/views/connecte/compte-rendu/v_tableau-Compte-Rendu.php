@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <table class="table">
         <tr class="table">
             <th>First Name</th>
-            <th>Visionner</th>
+            <th>Voir le Detail</th>
         </tr>
         <tr>
             <td>Jill</td>
