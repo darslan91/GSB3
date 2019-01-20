@@ -13,6 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <th>Adresse</th>
             <th>Notoriete Praticien</th>
             <th>Type Praticien</th>
+            <th>Modifier</th>
         </tr>
         
         <?php foreach ($detail as $key){?>
@@ -24,6 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         	<td><?php echo $key->pra_adresse." ".$key->pra_cp." ".$key->pra_ville?></td>
         	<td><?php echo $key->pra_coefnotoriete?></td>
         	<td><?php echo $key->typ_libelle?></td>
+        	<td><?php echo anchor('c_compte/modifier/'.$key->rap_num.'','X')?></td>
         </tr>
         <?php }?>
     </table>

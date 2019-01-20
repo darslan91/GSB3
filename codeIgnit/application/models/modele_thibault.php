@@ -32,7 +32,7 @@ class modele_thibault extends CI_Model{
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND praticien.typ_code = engine_praticien.typ_code ".
                "AND vis_matricule = '$idVis' ".
-               "AND rap_num = ".$id.
+               "AND rap_num = ".$id." ".
                "ORDER BY rap_num DESC ";
         $query = $this->db->query($req)->result();
         return $query;
