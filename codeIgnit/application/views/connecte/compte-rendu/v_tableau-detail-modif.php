@@ -23,8 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         	<td>
         		<select name="motif">
         			<option>Rapport Annuel</option>
-        			<option>Baisse activité</option>
-        			<option></option>
+        			<option>Nouveaute / Actualisation</option>
+                    <option>Baisse activite</option>
+                    <option>Solicitation</option>
         			<option>Autre</option>
         		</select>
         	</td>
