@@ -16,6 +16,14 @@ class modele_thibault extends CI_Model{
         return $query;
     }
 
+    public function getLesAnneDeRapport($idVis){
+        $req = "SELECT DISTINCT(rap_date) ".
+               "FROM rapport_visite ".
+               "WHERE vis_matricule = '$idVis'";
+        $query = $this->db->query($req)->result();
+        return $query;
+    }
+
     public function getLesVisitesL($idVis, $limit){
         $req = "SELECT rap_num, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".

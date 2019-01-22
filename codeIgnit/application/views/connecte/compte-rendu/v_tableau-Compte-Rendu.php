@@ -45,8 +45,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <td style="border: 1px solid grey;">
                         <select name="anne">
                             <option value="Tous">Indefinie</option>
-                            <?php
-                            foreach ($rapport as $key){
+                            <?php var_dump($anne);
+                            foreach ($anne as $key){
                             ?>
                             <option><?php echo substr($key->rap_date, 0, 4) ?></option>
                             <?php } ?>

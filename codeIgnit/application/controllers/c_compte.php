@@ -11,7 +11,7 @@ class c_compte extends CI_Controller{
         $this->load->library('form_validation');
         $this->load->model('modele_thibault');
         
-            //Récupération id
+            //Rï¿½cupï¿½ration id
         $this->load->library('session');
         $idVisArray = $this->session->idVis;
         foreach ($idVisArray as $key){
@@ -26,6 +26,7 @@ class c_compte extends CI_Controller{
         
             //Corps
         $data['rapport'] = $this->modele_thibault->getLesVisites($idVis);
+        $data['anne'] = $this->modele_thibault->getLesAnneDeRapport($idVis);
         $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu', $data);
              
             //Bas
@@ -40,7 +41,7 @@ class c_compte extends CI_Controller{
         $this->load->library('form_validation');
         $this->load->model('modele_thibault');
         
-            //Récupération id
+            //Rï¿½cupï¿½ration id
         $this->load->library('session');
         $idVisArray = $this->session->idVis;
         foreach ($idVisArray as $key){
@@ -102,6 +103,10 @@ class c_compte extends CI_Controller{
         $this->load->view('connecte/v_bas');
     }
     
+    function nouveau_validation(){
+        echo 'test';
+    }
+
     function recherche(){
         /* CHARGEMENT */
             //Helper
@@ -130,7 +135,7 @@ class c_compte extends CI_Controller{
         $this->load->library('form_validation');
         $this->load->model('modele_thibault');
         
-            //id récupération
+            //id rï¿½cupï¿½ration
         $this->load->library('session');
         $idVisArray = $this->session->idVis;
         foreach ($idVisArray as $key){
@@ -159,7 +164,7 @@ class c_compte extends CI_Controller{
         $this->load->library('form_validation');
         $this->load->model('modele_thibault');
         
-        //id récupération
+        //id rï¿½cupï¿½ration
         $this->load->library('session');
         $idVisArray = $this->session->idVis;
         foreach ($idVisArray as $key){

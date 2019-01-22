@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <th>Valider</th>
         </tr>
         
-        <?php echo form_open('c_compte/validation_nouveau', $_POST);?>
+        <?php echo form_open('c_compte/nouveau_validation', $_POST);?>
         <tr>
         	<td><input type="text" readonly value="<?php foreach($nbRap as $key){echo $key->max+1;} ?>" name="numRap"></td>
         	<td>
