@@ -75,7 +75,6 @@ class c_compte extends CI_Controller{
             $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu', $data);
         }
         
-        
         //Bas
         $this->load->view('connecte/v_bas');
     }
@@ -86,6 +85,7 @@ class c_compte extends CI_Controller{
         $this->load->helper('html');
         $this->load->helper('form');
         $this->load->library('form_validation');
+        $this->load->model('modele_thibault');
         
             //Haut + menu
         $this->load->view('connecte/v_haut');
@@ -94,7 +94,9 @@ class c_compte extends CI_Controller{
         $this->load->view('connecte/compte-rendu/v_menu_compte-rendu');
         
             //Coprs
-        $this->load->view('connecte/compte-rendu/v_nouveau');
+        $data['praticien'] = $this->modele_thibault->getLesPraticiens();
+        $data['nbRap'] = $this->modele_thibault->getLeNumRapport();
+        $this->load->view('connecte/compte-rendu/v_nouveau', $data);
         
             //Bas
         $this->load->view('connecte/v_bas');

@@ -77,6 +77,21 @@ class modele_thibault extends CI_Model{
         return $query;
     }
 
+    public function getLesPraticiens(){
+      $req = "SELECT pra_nom ".
+             "FROM praticien ".
+             "ORDER BY pra_nom";
+      $query = $this->db->query($req)->result();
+        return $query;
+    }
+
+    public function getLeNumRapport(){
+      $req = "SELECT MAX(rap_num) as max ".
+             "FROM rapport_visite";
+      $query = $this->db->query($req)->result();
+      return $query;
+    }
+
 }
 
 ?>
