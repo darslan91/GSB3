@@ -26,9 +26,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         		</select>
         	</td>
         	<td>
-        		<select name="nomPraRap">
+        		<select name="nomPrenomPra">
         			<?php foreach ($praticien as $key) { ?>
-        				<option><?php echo $key->pra_nom ." ".$key->pra_prenom; ?></option>
+        				<option><?php echo $key->pra_nom ." - ".$key->pra_prenom; ?></option>
         			<?php } ?>
         		</select>
         	</td>
@@ -36,6 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         	<td><?php echo form_submit('envoie', 'Valider') ?></td>
         </tr>
     </table>
+    <textarea name="textArea" style="width: 100%; height: 100px; margin-top: 1%;" required="required"></textarea>
     <?php echo form_close();?>
     <?php echo anchor('c_compte/index','Retour')?>
 </div>

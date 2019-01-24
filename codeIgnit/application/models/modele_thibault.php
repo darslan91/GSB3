@@ -100,6 +100,21 @@ class modele_thibault extends CI_Model{
       return $query;
     }
 
+    public function getIdPra($nom, $prenom){
+      $req = "SELECT pra_num ".
+             "FROM praticien ".
+             "WHERE pra_nom = '$nom' ".
+             "AND pra_prenom = '$prenom'";  
+      $query = $this->db->query($req)->result();
+      return $query;
+    }
+
+    public function insertNouveauRapport($vis_matricule, $rap_num, $pra_num, $rap_date, $rap_bilan, $rap_motif){
+      $req = "INSERT INTO rapport_visite(VIS_MATRICULE, RAP_NUM, PRA_NUM, RAP_DATE, RAP_BILAN) VALUES('$vis_matricule', '$rap_num', '$rap_date', '$rap_motif', '$rap_bilan')";
+      var_dump($req);
+      $this->db->query($req);
+    }
+
 }
 
 ?>
