@@ -13,28 +13,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <th>Médicament Effets</th>
         <th>Médicament Contre-indications</th>
     </tr>
+    
+    <!-- Début tableau -->
+    <?php 
+    foreach ($rapport as $key){
+    ?>
 
     <tr>
+        <td><?php echo $key->num_medoc?></td>
+        <td>Dépôt Légal</td>
+        <td>Dépôt Légal</td>
+        <td>Dépôt Légal</td>
+        <td>Dépôt Légal</td>
+        <td>Dépôt Légal</td>
         <td>Dépôt Légal</td>
     </tr>
+    <?php}?>
 
-    <tr>
-        <td>Dépôt Légal</td>
-    </tr>
-
-    <tr>
-        <td>Dépôt Légal</td>
-    </tr>
-
-    <tr>
-        <td>Dépôt Légal</td>
-    </tr>
-
-    <tr>
-        <td>Dépôt Légal</td>
-    </tr>
-
-    <tr>
-        <td>Dépôt Légal</td>
-    </tr>
 </table>
