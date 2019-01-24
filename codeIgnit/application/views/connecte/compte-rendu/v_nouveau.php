@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         	<td>
         		<select name="nomPraRap">
         			<?php foreach ($praticien as $key) { ?>
-        				<option><?php echo $key->pra_nom; ?></option>
+        				<option><?php echo $key->pra_nom ." ".$key->pra_prenom; ?></option>
         			<?php } ?>
         		</select>
         	</td>

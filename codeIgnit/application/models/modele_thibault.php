@@ -86,7 +86,7 @@ class modele_thibault extends CI_Model{
     }
 
     public function getLesPraticiens(){
-      $req = "SELECT pra_nom ".
+      $req = "SELECT pra_nom, pra_prenom ".
              "FROM praticien ".
              "ORDER BY pra_nom";
       $query = $this->db->query($req)->result();
