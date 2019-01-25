@@ -115,7 +115,9 @@ class modele_thibault extends CI_Model{
 
 /* --------------------------------------------------- */
   //nouveau rapport
-/* --------------------------------------------------- */    
+/* --------------------------------------------------- */  
+
+      //Récupération du nom du praticien 
     public function getPrenom($id){
         $req = "SELECT vis_nom FROM praticien ".
             "WHERE vis_matricule = '$idVis'";
@@ -123,6 +125,7 @@ class modele_thibault extends CI_Model{
         return $query;
     }
 
+      //Récupération des infos des praticiens
     public function getLesPraticiens(){
       $req = "SELECT pra_nom, pra_prenom ".
              "FROM praticien ".
@@ -131,6 +134,7 @@ class modele_thibault extends CI_Model{
         return $query;
     }
 
+      //Récupérer le nombre de rapport total
     public function getLeNumRapport(){
       $req = "SELECT MAX(rap_num) as max ".
              "FROM rapport_visite";
@@ -138,6 +142,7 @@ class modele_thibault extends CI_Model{
       return $query;
     }
 
+      //Récupération de l'id du praticien
     public function getIdPra($nom, $prenom){
       $req = "SELECT pra_num ".
              "FROM praticien ".
@@ -147,6 +152,7 @@ class modele_thibault extends CI_Model{
       return $query;
     }
 
+      //Insertion d'un nouveau rapport
     public function insertNouveauRapport($vis_matricule, $rap_num, $pra_num, $rap_date, $rap_bilan, $rap_motif){
       $req = "INSERT INTO rapport_visite(VIS_MATRICULE, RAP_NUM, PRA_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF) VALUES('$vis_matricule', '$rap_num', '$pra_num','$rap_date', '$rap_bilan', '$rap_motif')";
       var_dump($req);

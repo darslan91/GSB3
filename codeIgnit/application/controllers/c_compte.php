@@ -2,7 +2,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class c_compte extends CI_Controller{
-    
+
+/* --------------------------------------------------- */
+//Index
+/* --------------------------------------------------- */
+    /**
+    *Fonction index
+    *Permet l'affichage de base du tableau
+    */
+/* --------------------------------------------------- */
     public function index(){
         /* CHARGEMENT */
             //Helper
@@ -17,7 +25,7 @@ class c_compte extends CI_Controller{
         foreach ($idVisArray as $key){
             $idVis = $key->vis_matricule;
         }
-                
+
             //Haut + menu
         $this->load->view('connecte/v_haut');
         $this->load->view('connecte/v_menu');
@@ -32,6 +40,8 @@ class c_compte extends CI_Controller{
             //Bas
         $this->load->view('connecte/v_bas');
     }
+
+/* --------------------------------------------------- */
     
     function rechercheImpressise(){
         /* CHARGEMENT */
