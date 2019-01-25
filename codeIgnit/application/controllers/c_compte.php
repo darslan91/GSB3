@@ -17,6 +17,9 @@ class c_compte extends CI_Controller{
         foreach ($idVisArray as $key){
             $idVis = $key->vis_matricule;
         }
+        if($idVis == null){
+            header("location: c_accueil/deconnexion");
+        }
         
             //Haut + menu
         $this->load->view('connecte/v_haut');
@@ -137,22 +140,9 @@ class c_compte extends CI_Controller{
         foreach ($pra as $key) {
             $idPra = $key->pra_num;
         }
+        
         $this->modele_thibault->insertNouveauRapport($idVis, $numRap, $idPra, $dateRap, $bilanRap, $motifRap);
-
-        // echo $pra;
-        // echo "<br/>";
-        // echo $nom_pra;
-        // echo "<br/>";
-        // echo $prenomPra;
-        // echo "<br/>";
-        // echo $numRap;
-        // echo "<br/>";
-         echo $motifRap;
-        // echo "<br/>";
-        // echo $dateRap;
-        // echo "<br/>";
-        // echo $bilanRap;
-
+        
             //corps
         $data['rapport'] = $this->modele_thibault->getLesVisites($idVis);
         $data['anne'] = $this->modele_thibault->getLesAnneDeRapport($idVis);

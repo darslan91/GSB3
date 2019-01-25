@@ -8,7 +8,7 @@ class modele_thibault extends CI_Model{
     }
     
     public function getLesVisites($idVis){
-        $req = "SELECT rap_num, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
+        $req = "SELECT DISTINCT rap_num, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND vis_matricule = '$idVis' ".
                "ORDER BY rap_num DESC";
@@ -25,7 +25,7 @@ class modele_thibault extends CI_Model{
     }
 
     public function getLesVisitesL($idVis, $limit){
-        $req = "SELECT rap_num, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
+        $req = "SELECT DISTINCT rap_num, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND vis_matricule = '$idVis' ".
                "ORDER BY rap_num DESC ".
@@ -47,7 +47,7 @@ class modele_thibault extends CI_Model{
     }
     
     public function getLesVisitesAnne($idVis, $anne){
-        $req = "SELECT rap_num, rap_date, rap_motif, pra_nom ".
+        $req = "SELECT DISTINCT rap_num, rap_date, rap_motif, pra_nom ".
                "FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND vis_matricule = '$idVis' ".
@@ -58,17 +58,17 @@ class modele_thibault extends CI_Model{
     }
 
     public function getLesVisitesNom($idVis, $nom){
-      $req = "SELECT rap_num, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
+      $req = "SELECT DISTINCT rap_num, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND vis_matricule = '$idVis' ".
-               "AND pra_nom LIKE '$nom%' ".
+               "AND pra_nom = '$nom' ".
                "ORDER BY rap_num DESC ";
         $query = $this->db->query($req)->result();
         return $query;
     }
 
     public function getLesVisitesAnneNom($idVis, $nom, $anne){
-      $req = "SELECT rap_num, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
+      $req = "SELECT DISTINCT rap_num, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND vis_matricule = '$idVis' ".
                "AND pra_nom LIKE '$nom%' ".
@@ -110,7 +110,7 @@ class modele_thibault extends CI_Model{
     }
 
     public function insertNouveauRapport($vis_matricule, $rap_num, $pra_num, $rap_date, $rap_bilan, $rap_motif){
-      $req = "INSERT INTO rapport_visite(VIS_MATRICULE, RAP_NUM, PRA_NUM, RAP_DATE, RAP_BILAN) VALUES('$vis_matricule', '$rap_num', '$rap_date', '$rap_motif', '$rap_bilan')";
+      $req = "INSERT INTO rapport_visite(VIS_MATRICULE, RAP_NUM, PRA_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF) VALUES('$vis_matricule', '$rap_num', '$pra_num','$rap_date', '$rap_bilan', '$rap_motif')";
       var_dump($req);
       $this->db->query($req);
     }

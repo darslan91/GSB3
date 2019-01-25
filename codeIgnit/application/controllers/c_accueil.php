@@ -58,7 +58,7 @@ class c_accueil extends CI_Controller{
     
 	   //Fonction de déconnexion
 	function deconnexion(){
-		if(isset($_SESSION)){
+		if(isset($this->session)){
 			foreach ($_SESSION as $key => $value) {
 				$_SESSION[$key] = null;
 			}

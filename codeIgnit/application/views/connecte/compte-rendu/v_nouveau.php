@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         			<?php } ?>
         		</select>
         	</td>
-        	<td><input type="text" readonly name="dateNv" value="<?php echo date("j-m-Y"); ?>"></td>
+        	<td><input type="text" readonly name="dateNv" value="<?php echo date("Y-m-j"); ?>"></td>
         	<td><?php echo form_submit('envoie', 'Valider') ?></td>
         </tr>
     </table>
