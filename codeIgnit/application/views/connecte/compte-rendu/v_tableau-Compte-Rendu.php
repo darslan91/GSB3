@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <tr>
         	<td><?php echo $key->rap_num?></td>
         	<td><?php echo $key->rap_motif?></td>
-        	<td><?php echo $key->pra_nom?></td>
+        	<td><?php echo $key->pra_nom." ".$key->pra_prenom ?></td>
         	<td><?php echo substr($key->rap_date, 0, 10)?></td>
         	<td><?php echo anchor('c_compte/detail/'.$key->rap_num.'','X'); ?></td>
         </tr>
@@ -45,11 +45,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <td style="border: 1px solid grey;">
                         <select name="anne">
                             <option value="Tous">Indefinie</option>
-                            <?php var_dump($anne);
+                            <?php
                             foreach ($anne as $key){
-                            ?>
-                            <option><?php echo substr($key->rap_date, 0, 4) ?></option>
-                            <?php } ?>
+                                $ajd = substr($key->rap_date, 0, 4);
+                                if(!isset($hier)){
+                                    ?>
+                                    <option><?php echo $ajd; ?></option>
+                                    <?php
+                                    $hier = $ajd;
+                                    echo $hier;
+                                }
+                                else{
+                                    if ($hier != $ajd) {
+                                       ?>
+                                       <option><?php echo $ajd; ?></option>
+                                       <?php 
+                                    }
+                                    $hier = $ajd;
+                                }
+                            } ?>
                         </select>
                     </td>
                     <td style="border: 1px solid grey;">
@@ -57,9 +71,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <option value="Tous">Indefinie</option>
                             <?php
                             foreach ($rapport as $key){
-                            ?>
-                            <option><?php echo $key->pra_nom ?></option>
-                            <?php } ?>
+                                $ajd = $key->pra_nom;
+                                if(!isset($hier)){
+                                    ?>
+                                    <option><?php echo $ajd; ?></option>
+                                    <?php
+                                    $hier = $ajd;
+                                }
+                                else{
+                                    if ($hier != $ajd) {
+                                       ?>
+                                       <option><?php echo $ajd; ?></option>
+                                       <?php 
+                                    }
+                                    $hier = $ajd;
+                                }
+                            } ?>                            
                         </select>
                     </td>
                     <td style="border: 1px solid grey;">

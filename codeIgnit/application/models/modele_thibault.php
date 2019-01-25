@@ -20,7 +20,7 @@ class modele_thibault extends CI_Model{
 
       //Récupération de toutes les visites
     public function getLesVisites($idVis){
-        $req = "SELECT DISTINCT pra_nom ,rap_num, rap_date, rap_motif FROM rapport_visite, praticien ".
+        $req = "SELECT DISTINCT pra_nom, pra_prenom, rap_num, rap_date, rap_motif FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND vis_matricule = '$idVis' ".
                "ORDER BY rap_num DESC";
@@ -30,7 +30,7 @@ class modele_thibault extends CI_Model{
 
       //Détail de la visite sélectionné
     public function getLaVisite($id, $idVis){
-        $req = "SELECT rap_num, rap_date, rap_motif, pra_nom, pra_prenom, pra_adresse, pra_cp, pra_ville, pra_coefnotoriete, typ_libelle ".
+        $req = "SELECT rap_num, rap_date, pra_prenom, rap_motif, pra_nom, pra_prenom, pra_adresse, pra_cp, pra_ville, pra_coefnotoriete, typ_libelle ".
                "FROM rapport_visite,  praticien, engine_praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND praticien.typ_code = engine_praticien.typ_code ".
@@ -66,7 +66,7 @@ class modele_thibault extends CI_Model{
 
       //Limité le nombre de visite
     public function getLesVisitesL($idVis, $limit){
-        $req = "SELECT DISTINCT rap_num, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
+        $req = "SELECT DISTINCT rap_num, pra_prenom, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND vis_matricule = '$idVis' ".
                "ORDER BY rap_num DESC ".
@@ -77,7 +77,7 @@ class modele_thibault extends CI_Model{
     
       //Suivant l'anné
     public function getLesVisitesAnne($idVis, $anne){
-        $req = "SELECT DISTINCT rap_num, rap_date, rap_motif, pra_nom ".
+        $req = "SELECT DISTINCT rap_num, pra_prenom, rap_date, rap_motif, pra_nom ".
                "FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND vis_matricule = '$idVis' ".
@@ -89,7 +89,7 @@ class modele_thibault extends CI_Model{
 
       // Suivant le nom
     public function getLesVisitesNom($idVis, $nom){
-      $req = "SELECT DISTINCT rap_num, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
+      $req = "SELECT DISTINCT rap_num, pra_prenom, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND vis_matricule = '$idVis' ".
                "AND pra_nom = '$nom' ".
@@ -100,7 +100,7 @@ class modele_thibault extends CI_Model{
 
       //Suivant l'anne et le nom
     public function getLesVisitesAnneNom($idVis, $nom, $anne){
-      $req = "SELECT DISTINCT rap_num, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
+      $req = "SELECT DISTINCT rap_num, pra_prenom, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND vis_matricule = '$idVis' ".
                "AND pra_nom LIKE '$nom%' ".
