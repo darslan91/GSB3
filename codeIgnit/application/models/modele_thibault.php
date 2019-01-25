@@ -3,12 +3,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class modele_thibault extends CI_Model{
     
+/* --------------------------------------------------- */
+  //contructeur
+/* --------------------------------------------------- */
+
     public function __construct(){
         $this->load->database();
     }
-    
+
+/* --------------------------------------------------- */
+
+
+/* --------------------------------------------------- */
+  //Récupération des rapports
+/* --------------------------------------------------- */
+
+      //Récupération de toutes les visites
     public function getLesVisites($idVis){
-        $req = "SELECT DISTINCT rap_num, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
+        $req = "SELECT DISTINCT pra_nom ,rap_num, rap_date, rap_motif FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND vis_matricule = '$idVis' ".
                "ORDER BY rap_num DESC";
@@ -16,24 +28,7 @@ class modele_thibault extends CI_Model{
         return $query;
     }
 
-    public function getLesAnneDeRapport($idVis){
-        $req = "SELECT DISTINCT(rap_date) ".
-               "FROM rapport_visite ".
-               "WHERE vis_matricule = '$idVis'";
-        $query = $this->db->query($req)->result();
-        return $query;
-    }
-
-    public function getLesVisitesL($idVis, $limit){
-        $req = "SELECT DISTINCT rap_num, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
-               "WHERE rapport_visite.pra_num = praticien.pra_num ".
-               "AND vis_matricule = '$idVis' ".
-               "ORDER BY rap_num DESC ".
-               "limit ".$limit;
-        $query = $this->db->query($req)->result();
-        return $query;
-    }
-    
+      //Détail de la visite sélectionné
     public function getLaVisite($id, $idVis){
         $req = "SELECT rap_num, rap_date, rap_motif, pra_nom, pra_prenom, pra_adresse, pra_cp, pra_ville, pra_coefnotoriete, typ_libelle ".
                "FROM rapport_visite,  praticien, engine_praticien ".
@@ -45,7 +40,42 @@ class modele_thibault extends CI_Model{
         $query = $this->db->query($req)->result();
         return $query;
     }
+
+/* --------------------------------------------------- */
+
+
+/* --------------------------------------------------- */
+  //Recherche champs
+/* --------------------------------------------------- */
+
+      // Récupération de l'année de visite
+    public function getLesAnneDeRapport($idVis){
+        $req = "SELECT DISTINCT(rap_date) ".
+               "FROM rapport_visite ".
+               "WHERE vis_matricule = '$idVis'";
+        $query = $this->db->query($req)->result();
+        return $query;
+    }
+
+/* --------------------------------------------------- */
+
+
+/* --------------------------------------------------- */
+  //Affichage résultats de recherche
+/* --------------------------------------------------- */
+
+      //Limité le nombre de visite
+    public function getLesVisitesL($idVis, $limit){
+        $req = "SELECT DISTINCT rap_num, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
+               "WHERE rapport_visite.pra_num = praticien.pra_num ".
+               "AND vis_matricule = '$idVis' ".
+               "ORDER BY rap_num DESC ".
+               "limit ".$limit;
+        $query = $this->db->query($req)->result();
+        return $query;
+    }
     
+      //Suivant l'anné
     public function getLesVisitesAnne($idVis, $anne){
         $req = "SELECT DISTINCT rap_num, rap_date, rap_motif, pra_nom ".
                "FROM rapport_visite, praticien ".
@@ -57,6 +87,7 @@ class modele_thibault extends CI_Model{
         return $query;
     }
 
+      // Suivant le nom
     public function getLesVisitesNom($idVis, $nom){
       $req = "SELECT DISTINCT rap_num, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
@@ -67,6 +98,7 @@ class modele_thibault extends CI_Model{
         return $query;
     }
 
+      //Suivant l'anne et le nom
     public function getLesVisitesAnneNom($idVis, $nom, $anne){
       $req = "SELECT DISTINCT rap_num, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
@@ -77,7 +109,13 @@ class modele_thibault extends CI_Model{
         $query = $this->db->query($req)->result();
         return $query;
     }
-    
+
+/* --------------------------------------------------- */
+
+
+/* --------------------------------------------------- */
+  //nouveau rapport
+/* --------------------------------------------------- */    
     public function getPrenom($id){
         $req = "SELECT vis_nom FROM praticien ".
             "WHERE vis_matricule = '$idVis'";
@@ -114,6 +152,8 @@ class modele_thibault extends CI_Model{
       var_dump($req);
       $this->db->query($req);
     }
+
+/* --------------------------------------------------- */
 
 }
 
