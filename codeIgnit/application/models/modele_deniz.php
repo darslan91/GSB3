@@ -6,6 +6,7 @@ class modele_deniz extends CI_Model{
     public function __construct(){
         $this->load->database();
     }
+    
     /**
      * getLesMedicaments()
      * -------------------------------
@@ -23,14 +24,5 @@ class modele_deniz extends CI_Model{
 
 
 }
-
-
-
-
-
-
-
-
-
 
 ?>
