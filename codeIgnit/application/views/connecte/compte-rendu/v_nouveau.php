@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-
+/* --------------------------------------------------- */
+//Saisie d'un nouveau compte rendu
+/* --------------------------------------------------- */
  <h3>Nouveau</h3>
  <div style="overflow-x:auto;" class="compte-rendu">
     <table class="table">
@@ -40,4 +42,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php echo form_close();?>
     <?php echo anchor('c_compte/index','Retour')?>
 </div>
+/* --------------------------------------------------- */
 

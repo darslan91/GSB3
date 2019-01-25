@@ -40,9 +40,18 @@ class c_compte extends CI_Controller{
             //Bas
         $this->load->view('connecte/v_bas');
     }
+/* --------------------------------------------------- */
+
 
 /* --------------------------------------------------- */
-    
+//Recheche impressise
+/* --------------------------------------------------- */
+    /*
+    *Fonction de recherche dynamique
+    *Permet d'afficher le resultat de la recherche du
+    *compte rendu de tableau
+    */
+/* --------------------------------------------------- */  
     function rechercheImpressise(){
         /* CHARGEMENT */
             //Helper
@@ -88,8 +97,18 @@ class c_compte extends CI_Controller{
         
         //Bas
         $this->load->view('connecte/v_bas');
-    }
-    
+    }   
+/* --------------------------------------------------- */
+
+
+/* --------------------------------------------------- */
+//Saisie d'un nouveau compte rendu
+/* --------------------------------------------------- */
+    /*
+    *Fonction permettant la saisie d'un nv
+    *Rapport
+    */
+/* --------------------------------------------------- */
     function nouveau(){
         /* CHARGEMENT */
             //Helper
@@ -112,7 +131,18 @@ class c_compte extends CI_Controller{
             //Bas
         $this->load->view('connecte/v_bas');
     }
-    
+/* --------------------------------------------------- */
+
+
+/* --------------------------------------------------- */
+//Validation du nouveau Rapport
+/* --------------------------------------------------- */
+    /*
+    *Fonction permettant la vérification
+    *l'ajout et l'insertion d'un nouveau
+    *rapport
+    */
+/* --------------------------------------------------- */   
     function nouveau_validation(){
          /* CHARGEMENT */
             //Helper
@@ -157,7 +187,17 @@ class c_compte extends CI_Controller{
             //Bas
         $this->load->view('connecte/v_bas');
     }
+/* --------------------------------------------------- */
 
+
+/* --------------------------------------------------- */
+//Fonction recherche
+/* --------------------------------------------------- */
+    /*
+    *Fonction permettant d'afficher le resultat
+    *de la recherche dans le formulaire de l'index
+    */
+/* --------------------------------------------------- */
     function recherche(){
         /* CHARGEMENT */
             //Helper
@@ -177,7 +217,16 @@ class c_compte extends CI_Controller{
             //Bas
         $this->load->view('connecte/v_bas');
     }
-    
+/* --------------------------------------------------- */
+
+
+/* --------------------------------------------------- */
+//Fonction de détail
+/* --------------------------------------------------- */
+    /*
+    *Permet d'afficher le détail d'un rapport
+    */
+/* --------------------------------------------------- */   
     function detail($id){
         /* CHARGEMENT */
             //Helper
@@ -206,7 +255,15 @@ class c_compte extends CI_Controller{
             //Bas
         $this->load->view('connecte/v_bas');
     }
-    
+/* --------------------------------------------------- */
+
+/* --------------------------------------------------- */
+//Fonction modifier
+/* --------------------------------------------------- */
+    /*
+    *Modification du rapport
+    */
+/* --------------------------------------------------- */  
     function modifier($id){
         /* CHARGEMENT */
         //Helper
@@ -234,5 +291,6 @@ class c_compte extends CI_Controller{
         //Bas
         $this->load->view('connecte/v_bas');
     }
+/* --------------------------------------------------- */
     
 }

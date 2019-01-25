@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
+/* --------------------------------------------------- */
+//Affichage de la demande de modification du compte rendu
+/* --------------------------------------------------- */
 	<!-- Affichage du tableau -->
 <h3>Modification</h3>
 <div style="overflow-x:auto;" class="compte-rendu">
@@ -36,3 +39,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php echo form_close();?>
     <?php echo anchor('c_compte/index','Retour')?>
 </div>
+/* --------------------------------------------------- */
