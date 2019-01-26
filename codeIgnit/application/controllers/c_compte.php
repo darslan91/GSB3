@@ -126,6 +126,10 @@ class c_compte extends CI_Controller{
             //Coprs
         $data['praticien'] = $this->modele_thibault->getLesPraticiens();
         $data['nbRap'] = $this->modele_thibault->getLeNumRapport();
+        $data['spe'] = $this->modele_thibault->getSpe();
+        $data['rplc'] = $this->modele_thibault->getLesRplc();
+        $data['medoc'] = $this->modele_thibault->getLesMedoc();
+
         $this->load->view('connecte/compte-rendu/v_nouveau', $data);
         
             //Bas
@@ -157,6 +161,8 @@ class c_compte extends CI_Controller{
         foreach ($idVisArray as $key){
             $idVis = $key->vis_matricule;
         }
+        $erreur = false;
+        $erreurCode = array("Erreur :");
 
             //Haut + menu
         $this->load->view('connecte/v_haut');
@@ -164,25 +170,103 @@ class c_compte extends CI_Controller{
         $this->load->view('connecte/compte-rendu/v_titre');
         $this->load->view('connecte/compte-rendu/v_menu_compte-rendu');
 
+        /* --------------------------------------------------- */  
+        //donné de base
+        /* --------------------------------------------------- */  
             //traitement
         $numRap = $this->input->post('numRap');
-        $motifRap = $_POST['motifRap'];
-        $nomPrenomPraRap = $this->input->post('nomPrenomPra');
-        $chaine = explode(" - ", $nomPrenomPraRap);
         $dateRap = $this->input->post('dateNv');
         $bilanRap = $this->input->post('textArea');
-        $nom_pra = $chaine[0];
-        $prenomPra = $chaine[1];
-        $pra = $this->modele_thibault->getIdPra($nom_pra, $prenomPra);
-        foreach ($pra as $key) {
-            $idPra = $key->pra_num;
+        /* --------------------------------------------------- */
+
+        /* --------------------------------------------------- */  
+        //Motif
+        /* --------------------------------------------------- */
+        if($_POST['motifRap'] == "Autre"){
+            if($_POST['autreMotif'] == ""){
+                $erreur = true;
+                $erreurCode[] = "Erreur num 1 : Veuillez préciser le autre";
+            }
+            else{
+                $motifRap = $_POST['autreMotif'];
+            }
         }
-        $this->modele_thibault->insertNouveauRapport($idVis, $numRap, $idPra, $dateRap, $bilanRap, $motifRap);
-        
-            //corps
-        $data['rapport'] = $this->modele_thibault->getLesVisites($idVis);
-        $data['anne'] = $this->modele_thibault->getLesAnneDeRapport($idVis);
-        $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu', $data);
+        else{
+            $motifRap = $_POST['motifRap'];
+        }
+        /* --------------------------------------------------- */
+
+        /* --------------------------------------------------- */
+        //remplacant
+        /* --------------------------------------------------- */
+        if(isset($_POST['mdcRemplace'])){
+            if($_POST['existeRplc'] != "Non"){
+                $idPra = $this->input->post('existeRplc');
+                $idPraRplc = $this->input->post('nomPrenomPra');
+            }
+            else{
+                $nomNouveauPra = $this->input->post('nomNouveauPra');
+                $prenomNouveauPra = $this->input->post('prenomNouveauPra');
+                $spe = $this->input->post('speCode');
+                if($nomNouveauPra == ""){
+                    $erreur = true;
+                    $erreurCode[] = "Erreur num 2 : oublie du nom praticien remplacant";
+                }
+                if($prenomNouveauPra == ""){
+                    $erreur = true;
+                    $erreurCode[] = "Erreur num 3 : oublie du prenom praticien remplacant";
+                }
+                if($nomNouveauPra != "" && $prenomNouveauPra != ""){
+                    $this->modele_thibault->insertRplc($nomNouveauPra, $prenomNouveauPra, $spe);
+                    $idG = $this->modele_thibault->getIdPra($nomNouveauPra, $prenomNouveauPra);
+                    foreach ($idG as $key) {
+                        $idPra = $key->pra_num;
+                    }
+                    $idPraRplc = $this->input->post('nomPrenomPra');
+                }                
+            }
+        }
+        else{
+            $idPra = $this->input->post('nomPrenomPra');
+            $idPraRplc = null;
+        }
+        /* --------------------------------------------------- */
+
+        /* --------------------------------------------------- */
+        //cadeau
+        /* --------------------------------------------------- */
+        $check1 = $this->input->post('check1');
+        $check2 = $this->input->post('check2');
+        $check3 = $this->input->post('check3');
+        if($check1 == "on") {
+            $this->modele_thibault->insertCadeau($idVis, $numRap, $this->input->post('cadeau1'));
+        }
+        if($check2 == "on") {
+            $this->modele_thibault->insertCadeau($idVis, $numRap, $this->input->post('cadeau2'));
+        }
+        if($check3 == "on") {
+            $this->modele_thibault->insertCadeau($idVis, $numRap, $this->input->post('cadeau3'));
+        }
+        /* --------------------------------------------------- */        
+
+        if($erreur == false){
+            $this->modele_thibault->insertNouveauRapport($idVis, $numRap, $idPra, $dateRap, $bilanRap, $motifRap, $idPraRplc);
+                //corps
+            $data['rapport'] = $this->modele_thibault->getLesVisites($idVis);
+            $data['anne'] = $this->modele_thibault->getLesAnneDeRapport($idVis);
+            $this->load->view('connecte/compte-rendu/v_tableau-Compte-Rendu', $data);
+        }
+        else{
+                //Coprs
+            $data['praticien'] = $this->modele_thibault->getLesPraticiens();
+            $data['nbRap'] = $this->modele_thibault->getLeNumRapport();
+            $data['spe'] = $this->modele_thibault->getSpe();
+            $data['rplc'] = $this->modele_thibault->getLesRplc();
+            $data['medoc'] = $this->modele_thibault->getLesMedoc();
+            $data['erreurCode'] = $erreurCode;
+
+            $this->load->view('connecte/compte-rendu/v_nouveau', $data);
+        }
 
             //Bas
         $this->load->view('connecte/v_bas');

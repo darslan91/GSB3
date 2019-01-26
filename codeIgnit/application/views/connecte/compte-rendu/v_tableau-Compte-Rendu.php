@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-/* --------------------------------------------------- */
+<!-- /* --------------------------------------------------- */
 //Affichage de tout les comptes rendus
-/* --------------------------------------------------- */
+/* --------------------------------------------------- */ -->
 	<!-- Affichage du tableau -->
 <h3>Tous les Comptes-Rendus</h3>
 <div style="overflow-x:auto;" class="compte-rendu">

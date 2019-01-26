@@ -127,8 +127,9 @@ class modele_thibault extends CI_Model{
 
       //Récupération des infos des praticiens
     public function getLesPraticiens(){
-      $req = "SELECT pra_nom, pra_prenom ".
+      $req = "SELECT pra_num,pra_nom, pra_prenom ".
              "FROM praticien ".
+             "WHERE rplc = 0 ".
              "ORDER BY pra_nom";
       $query = $this->db->query($req)->result();
         return $query;
@@ -152,11 +153,47 @@ class modele_thibault extends CI_Model{
       return $query;
     }
 
+    public function getSpe(){
+      $req = "SELECT typ_code, typ_libelle ".
+             "FROM engine_praticien";
+      $query = $this->db->query($req)->result();
+      return $query;
+    }
+
+    public function getLesRplc(){
+      $req = "SELECT pra_num, pra_nom, pra_prenom ".
+             "FROM praticien ".
+             "WHERE rplc = 1 ".
+             "ORDER BY pra_nom";
+      $query = $this->db->query($req)->result();
+      return $query;       
+    }
+
+    public function getLesMedoc(){
+      $req = "SELECT med_depotlegal, med_nomcommercial as nom ".
+             "FROM medicament ORDER BY nom";
+      $query = $this->db->query($req)->result();
+      return $query;       
+    }
+
       //Insertion d'un nouveau rapport
-    public function insertNouveauRapport($vis_matricule, $rap_num, $pra_num, $rap_date, $rap_bilan, $rap_motif){
-      $req = "INSERT INTO rapport_visite(VIS_MATRICULE, RAP_NUM, PRA_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF) VALUES('$vis_matricule', '$rap_num', '$pra_num','$rap_date', '$rap_bilan', '$rap_motif')";
-      var_dump($req);
+    public function insertNouveauRapport($vis_matricule, $rap_num, $pra_num, $rap_date, $rap_bilan, $rap_motif, $rplc){
+      $req = "INSERT INTO rapport_visite(VIS_MATRICULE, RAP_NUM, PRA_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF, NUM_RPLC) ".
+              "VALUES('$vis_matricule', '$rap_num', '$pra_num','$rap_date', '$rap_bilan', '$rap_motif' ,'$rplc')";
       $this->db->query($req);
+    }
+
+      //Insertion d'un médecin remplacant
+    public function insertRplc($nom, $prenom, $spe){
+      $req = "INSERT INTO praticien(pra_nom, pra_prenom, typ_code, rplc) ".
+             "VALUES('$nom', '$prenom', '$spe', '1')";
+      $this->db->query($req);
+    }
+
+      //insertion dans offrir
+    public function insertCadeau($vis, $num, $med){
+      $req = "INSERT INTO offrir(vis_matricule, rap_num, med_depotlegal, off_qte) ".
+             "VALUE('$vis', '$num', '$med', '1')";
     }
 
 /* --------------------------------------------------- */
