@@ -20,14 +20,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     ?>
 
     <tr>
-        <td><?php echo $key->num_medoc?></td>
-        <td>Dépôt Légal</td>
-        <td>Dépôt Légal</td>
-        <td>Dépôt Légal</td>
-        <td>Dépôt Légal</td>
-        <td>Dépôt Légal</td>
-        <td>Dépôt Légal</td>
+        <td><?php echo $key['med_depolegal']?></td>
     </tr>
-    <?php}?>
+    <?php
+    }
+    ?>
 
 </table>

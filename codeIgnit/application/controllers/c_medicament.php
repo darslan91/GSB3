@@ -3,6 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class c_medicament extends CI_Controller{
 
+//Liste des services à insérer dans la liste déroulante du menu de navigation
+$tab = $pdo->getLesMedicament($secteur);
+if (empty($tab)) {
+	$tab[0]["med_depotlegal"] = "Aucun Numéro";
+}
+
     /**
      * Fonction index()
      * --------------------
@@ -13,7 +19,7 @@ class c_medicament extends CI_Controller{
         $this->load->helper('html');
 
         //Model
-        $this->load->model('modele_thibault');
+        $this->load->model('modele_deniz');
 
         //Views
         $this->load->view('connecte/v_haut');
