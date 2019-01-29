@@ -217,12 +217,18 @@ class c_compte extends CI_Controller{
                     $erreurCode[] = "Erreur num 3 : oublie du prenom praticien remplacant";
                 }
                 if($nomNouveauPra != "" && $prenomNouveauPra != ""){
+                    $idPraRplc = $this->input->post('nomPrenomPra');
+                    // $infoRemplace = $this->modele_thibault->getInfoRemplace($idPraRplc);
+                    // foreach ($infoRemplace as $key) {
+                    //     $adresse
+                    //     $corps
+                    //     $ville
+                    // }
                     $this->modele_thibault->insertRplc($nomNouveauPra, $prenomNouveauPra, $spe);
                     $idG = $this->modele_thibault->getIdPra($nomNouveauPra, $prenomNouveauPra);
                     foreach ($idG as $key) {
                         $idPra = $key->pra_num;
                     }
-                    $idPraRplc = $this->input->post('nomPrenomPra');
                 }                
             }
         }
@@ -334,7 +340,17 @@ class c_compte extends CI_Controller{
         
             //Corps
         $data['detail'] = $this->modele_thibault->getLaVisite($id, $idVis);
-        $this->load->view('connecte/compte-rendu/v_tableau-detail', $data);
+        $detail = $data['detail'];
+        foreach ($detail as $key) {
+            $rplc = $key->num_rplc;
+        }
+        if($rplc == 0 || $rplc == null){
+            $this->load->view('connecte/compte-rendu/v_tableau-detail', $data);
+        }
+        else{
+            $data['getInfoRemplace'] = $this->modele_thibault->getInfoRemplace($rplc);
+            $this->load->view('connecte/compte-rendu/v_tableau-detail-remplace', $data);
+        }
         
             //Bas
         $this->load->view('connecte/v_bas');

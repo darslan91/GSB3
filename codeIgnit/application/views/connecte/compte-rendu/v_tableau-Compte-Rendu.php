@@ -13,6 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <th>Motif Visite</th>
             <th>Nom Practicien</th>
             <th>Date Visite</th>
+            <th>Remplacement</th>
             <th>Voir le Detail</th>
         </tr>
         <?php
@@ -23,6 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         	<td><?php echo $key->rap_motif?></td>
         	<td><?php echo $key->pra_nom." ".$key->pra_prenom ?></td>
         	<td><?php echo substr($key->rap_date, 0, 10)?></td>
+            <td><?php if($key->num_rplc == '0' || $key->num_rplc == null){echo "Non";}else{echo "Oui";}?></td>
         	<td><?php echo anchor('c_compte/detail/'.$key->rap_num.'','X'); ?></td>
         </tr>
         <?php } ?>
