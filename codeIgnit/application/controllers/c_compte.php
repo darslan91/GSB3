@@ -392,5 +392,5 @@ class c_compte extends CI_Controller{
         $this->load->view('connecte/v_bas');
     }
 /* --------------------------------------------------- */
-    
+// AM246B1N
 }
