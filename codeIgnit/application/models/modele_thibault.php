@@ -66,7 +66,7 @@ class modele_thibault extends CI_Model{
 
       //Limité le nombre de visite
     public function getLesVisitesL($idVis, $limit){
-        $req = "SELECT DISTINCT rap_num, pra_prenom, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
+        $req = "SELECT DISTINCT rap_num, pra_prenom, rap_date, rap_motif, pra_nom, num_rplc FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND vis_matricule = '$idVis' ".
                "ORDER BY rap_num DESC ".
@@ -77,7 +77,7 @@ class modele_thibault extends CI_Model{
     
       //Suivant l'anné
     public function getLesVisitesAnne($idVis, $anne){
-        $req = "SELECT DISTINCT rap_num, pra_prenom, rap_date, rap_motif, pra_nom ".
+        $req = "SELECT DISTINCT rap_num, pra_prenom, rap_date, rap_motif, pra_nom, num_rplc ".
                "FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND vis_matricule = '$idVis' ".
@@ -89,7 +89,7 @@ class modele_thibault extends CI_Model{
 
       // Suivant le nom
     public function getLesVisitesNom($idVis, $nom){
-      $req = "SELECT DISTINCT rap_num, pra_prenom, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
+      $req = "SELECT DISTINCT rap_num, pra_prenom, rap_date, rap_motif, pra_nom, num_rplc FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND vis_matricule = '$idVis' ".
                "AND pra_nom = '$nom' ".
@@ -100,7 +100,7 @@ class modele_thibault extends CI_Model{
 
       //Suivant l'anne et le nom
     public function getLesVisitesAnneNom($idVis, $nom, $anne){
-      $req = "SELECT DISTINCT rap_num, pra_prenom, rap_date, rap_motif, pra_nom FROM rapport_visite, praticien ".
+      $req = "SELECT DISTINCT rap_num, pra_prenom, rap_date, rap_motif, pra_nom, num_rplc FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND vis_matricule = '$idVis' ".
                "AND pra_nom LIKE '$nom%' ".

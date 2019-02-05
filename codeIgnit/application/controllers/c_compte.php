@@ -180,7 +180,7 @@ class c_compte extends CI_Controller{
         /* --------------------------------------------------- */
 
         /* --------------------------------------------------- */  
-        //Motif
+        //Motif dela visite
         /* --------------------------------------------------- */
         if($_POST['motifRap'] == "Autre"){
             if($_POST['autreMotif'] == ""){
@@ -197,7 +197,7 @@ class c_compte extends CI_Controller{
         /* --------------------------------------------------- */
 
         /* --------------------------------------------------- */
-        //remplacant
+        //remplacé ou non remplacé
         /* --------------------------------------------------- */
         if(isset($_POST['mdcRemplace'])){
             if($_POST['existeRplc'] != "Non"){
@@ -239,7 +239,7 @@ class c_compte extends CI_Controller{
         /* --------------------------------------------------- */
 
         /* --------------------------------------------------- */
-        //cadeau
+        //cadeau effectuer par le visiteur
         /* --------------------------------------------------- */
         $check1 = $this->input->post('check1');
         $check2 = $this->input->post('check2');
