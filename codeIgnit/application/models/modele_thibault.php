@@ -203,7 +203,28 @@ class modele_thibault extends CI_Model{
     public function insertCadeau($vis, $num, $med){
       $req = "INSERT INTO offrir(vis_matricule, rap_num, med_depotlegal, off_qte) ".
              "VALUE('$vis', '$num', '$med', '1')";
+      $this->db->query($req);
     }
+
+/* --------------------------------------------------- */
+
+
+/* --------------------------------------------------- */
+//Praticien
+/* --------------------------------------------------- */
+
+  /* --------------------------------------------------- */
+  //
+  /* --------------------------------------------------- */
+  public function getNbPraticien(){
+    $req = "SELECT COUNT(pra_num) as nb ".
+           "FROM praticien";
+    $query = $this->db->query($req)->result();
+    return $query;  
+  }
+
+  /* --------------------------------------------------- */
+
 
 /* --------------------------------------------------- */
 

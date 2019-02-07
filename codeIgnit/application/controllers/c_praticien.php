@@ -11,7 +11,7 @@ class c_praticien extends CI_Controller{
     *Permet l'affichage de base du tableau
     */
 /* --------------------------------------------------- */
-    public function index(){
+    public function index($num){
         /* CHARGEMENT */
             //Helper
         $this->load->helper('html');
@@ -26,6 +26,9 @@ class c_praticien extends CI_Controller{
             $idVis = $key->vis_matricule;
         }
 
+            //Variable
+        $data['nb'] = $this->modele_thibault->getNbPraticien();
+
             //Haut + menu
         $this->load->view('connecte/v_haut');
         $this->load->view('connecte/v_menu');
@@ -33,6 +36,7 @@ class c_praticien extends CI_Controller{
         $this->load->view('connecte/praticien/v_menu_praticien');
              
             //Bas
+        $this->load->view('connecte/praticien/v_nb-page',$data);
         $this->load->view('connecte/v_bas');
     }
 /* --------------------------------------------------- */
