@@ -1,6 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+echo form_open('c_compte/rechercheImpressise', $_POST);
 ?>
+	<select name="nom">
+		<option value="indef">Indefinie</option>
+		<?php foreach ($praticien as $key): ?>
+			<option value="<?php ?>"></option>
+		<?php endforeach ?>
+	</select>
+	<select name="cp">
+		<?php foreach ($praticien as $key): ?>
+			<option value="<?php ?>"></option>
+		<?php endforeach ?>
+	</select>
 
 <?php foreach ($nb as $key){
 	echo br();
