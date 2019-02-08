@@ -1,3 +1,4 @@
+<footer>
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -10,6 +11,7 @@ echo form_open('c_compte/rechercheImpressise', $_POST);
 		<?php endforeach ?>
 	</select>
 	<select name="cp">
+		<option value="indef">Indefinie</option>
 		<?php foreach ($praticien as $key): ?>
 			<option value="<?php ?>"></option>
 		<?php endforeach ?>
@@ -38,3 +40,4 @@ echo form_open('c_compte/rechercheImpressise', $_POST);
 	</center>
 	<?php
 } ?>
+</footer>
