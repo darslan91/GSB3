@@ -11,7 +11,7 @@ class c_praticien extends CI_Controller{
     *Permet l'affichage de base du tableau
     */
 /* --------------------------------------------------- */
-    public function index($num){
+    public function index($num, $limit){
         /* CHARGEMENT */
             //Helper
         $this->load->helper('html');
@@ -28,6 +28,32 @@ class c_praticien extends CI_Controller{
 
             //Variable
         $data['nb'] = $this->modele_thibault->getNbPraticien();
+        if(isset($_POST['limite'])){
+            $data['limit'] = $_POST['limite'];
+        }
+        else{
+            $data['limit'] = $limit;
+        }
+        $data['num'] = $num;
+
+        if($num == 1){
+            foreach ($this->modele_thibault->getNbPraticien() as $key) {
+                $data['btnHaut'] = $key->nb;
+                $data['btnBas'] = ($key->nb-$limit*$num)+1;
+            }
+        }
+        else{
+           foreach ($this->modele_thibault->getNbPraticien() as $key) {
+                if($num == 2){
+                    $data['btnHaut'] = ($key->nb-$limit);
+                    $data['btnBas'] = ($key->nb-$limit*$num)+1;
+                }
+                else{
+                    $data['btnHaut'] = ($key->nb-$limit*($num-1));
+                    $data['btnBas'] = ($key->nb-$limit*$num)+1;
+                }
+            } 
+        }
 
             //Haut + menu
         $this->load->view('connecte/v_haut');
