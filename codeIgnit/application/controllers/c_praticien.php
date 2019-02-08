@@ -59,7 +59,7 @@ class c_praticien extends CI_Controller{
         $this->load->view('connecte/v_haut');
         $this->load->view('connecte/v_menu');
         $this->load->view('connecte/praticien/v_titre');
-        $this->load->view('connecte/praticien/v_menu_praticien');
+        $this->load->view('connecte/praticien/v_menu-praticien');
              
             //Bas
         $this->load->view('connecte/praticien/v_nb-page',$data);
