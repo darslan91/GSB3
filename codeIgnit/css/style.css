@@ -137,14 +137,37 @@
 			border: none;
 			outline: none;
 			cursor: pointer;
-			padding: 14px 16px;
-			width: auto;
+			padding: 7px 7px;
+			width: 4%;
 			margin-left: 1px;
+			margin-bottom: 1px;
 			font-size: 17px;
 			transition: 0.5s;
 			text-decoration: none;
+			float: left;
+			display: block;
+		}
+		.pagination2{
+			background-color: #5858FA;
+			color: white;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 7px 7px;
+			width: 4%;
+			margin-left: 1px;
+			margin-bottom: 1px;
+			font-size: 17px;
+			transition: 0.5s;
+			text-decoration: none;
+			float: left;
+			display: block;
 		}
 
 		.pagination:hover{
 			background-color: #5858FA;
+		}
+
+		.pagination2:hover{
+			background-color: #555;
 		}

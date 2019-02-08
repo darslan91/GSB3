@@ -14,7 +14,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<center>
 	<?php
 	for ($i=1; $i <= ceil($key->nb/$limit); $i++) {
-		echo anchor('c_praticien/index/'.$i.'/'.$limit,''.$i, 'class="pagination"');
+		if($num == $i){
+			echo anchor('c_praticien/index/'.$i.'/'.$limit,''.$i, 'class="pagination2"');
+		}
+		else{
+			echo anchor('c_praticien/index/'.$i.'/'.$limit,''.$i, 'class="pagination"');
+		}
 	}
 	?>
 	</center>
