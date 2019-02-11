@@ -71,10 +71,10 @@ class c_praticien extends CI_Controller{
                 $data['praticien'] = $this->modele_thibault->getPraticienCp($btnHaut, $btnBas, $_POST['cp']);
             }
             if($_POST['nom'] != "indef" && $_POST['cp'] == "indef"){
-                $data['praticien'] = $this->modele_thibault->getPraticienNom($btnHaut, $btnBas, $nom);
+                $data['praticien'] = $this->modele_thibault->getPraticienNom($btnHaut, $btnBas, $_POST['nom']);
             }
             if($_POST['nom'] != "indef" && $_POST['cp'] != "indef"){
-                $data['praticien'] = $this->modele_thibault->getPraticienCpNom($btnHaut, $btnBas, $cp, $nom);
+                $data['praticien'] = $this->modele_thibault->getPraticienCpNom($btnHaut, $btnBas, $_POST['cp'], $_POST['nom']);
             }
         }
         
