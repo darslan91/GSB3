@@ -16,7 +16,7 @@ echo form_open('c_praticien/index/1/15', $_POST);
 			<select name="nom">
 				<option value="indef">Indefinie</option>
 				<?php foreach ($praticien as $key): ?>
-					<option value="<?php ?>"></option>
+					<option value="<?php echo $key->pra_num?>"><?php echo $key->pra_nom?></option>
 				<?php endforeach ?>
 			</select>
 		</td>
@@ -24,7 +24,9 @@ echo form_open('c_praticien/index/1/15', $_POST);
 			<select name="cp">
 				<option value="indef">Indefinie</option>
 				<?php foreach ($praticien as $key): ?>
-					<option value="<?php ?>"></option>
+					<?php if($key->pra_cp != ""){ ?>
+					<option value="<?php echo $key->pra_cp?>"><?php echo $key->pra_cp ?></option>
+					<?php } ?>
 				<?php endforeach ?>
 			</select>
 		</td>

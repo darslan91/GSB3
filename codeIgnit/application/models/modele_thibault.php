@@ -230,6 +230,15 @@ class modele_thibault extends CI_Model{
     $query = $this->db->query($req)->result();
     return $query;
   }
+
+  public function getPraticienCp($btnHaut, $btnBas, $cp){
+    $req = "SELECT pra_num, pra_prenom, pra_nom, pra_cp, typ_code ".
+           "FROM praticien ".
+           "WHERE pra_num BETWEEN '$btnBas' AND '$btnHaut' ".
+           "AND pra_cp = '$cp'";
+    $query = $this->db->query($req)->result();
+    return $query;
+  }
   /* --------------------------------------------------- */
 
 

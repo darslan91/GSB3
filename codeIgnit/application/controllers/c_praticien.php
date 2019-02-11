@@ -63,17 +63,20 @@ class c_praticien extends CI_Controller{
 
         $data['praticien'] = $this->modele_thibault->getPraticien($btnHaut, $btnBas);
 
-        // if(isset($_POST['nom']) && isset($_POST['cp'])){
-        //     $data['praticien'] = $this->modele_thibault->getPraticienPrenom($btnHaut, $btnBas);
-        // }
-        // if(isset($_POST['cp']) || isset($_POST['nom'])){
-        //     if(isset($_POST['cp'])){
-
-        //     }
-        //     if(isset($_POST['nom'])){
-
-        //     }
-        // }
+        if(isset($_POST['nom']) && isset($_POST['cp'])){
+            if($_POST['nom'] == "indef" && $_POST['cp'] == "indef"){
+                $data['praticien'] = $this->modele_thibault->getPraticien($btnHaut, $btnBas);
+            }
+            if($_POST['nom'] == "indef" && $_POST['cp'] != "indef"){
+                $data['praticien'] = $this->modele_thibault->getPraticienCp($btnHaut, $btnBas, $_POST['cp']);
+            }
+            if($_POST['nom'] != "indef" && $_POST['cp'] == "indef"){
+                $data['praticien'] = $this->modele_thibault->getPraticienNom($btnHaut, $btnBas, $nom);
+            }
+            if($_POST['nom'] != "indef" && $_POST['cp'] != "indef"){
+                $data['praticien'] = $this->modele_thibault->getPraticienCpNom($btnHaut, $btnBas, $cp, $nom);
+            }
+        }
         
 
             //Haut + menu
@@ -83,7 +86,7 @@ class c_praticien extends CI_Controller{
         $this->load->view('connecte/praticien/v_menu-praticien');
 
             //Corps
-        $this->load->view('connecte/praticien/v_tableau-praticien', $data);
+        $this->load->view('connecte/praticien/v_tableau-praticien',$data);
              
             //Bas
         $this->load->view('connecte/praticien/v_nb-page',$data);
