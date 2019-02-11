@@ -30,15 +30,15 @@ echo form_open('c_praticien/index/1/15', $_POST);
 		</td>
 		<td style="border: 1px solid grey;">
 			<select name="limite">
-				<option>10</option>
-				<option>15</option>
-				<option>20</option>
-				<option>25</option>
-				<option>30</option>
-				<option>35</option>
-				<option>40</option>
-				<option>45</option>
-				<option>50</option>
+				<option value="10">10</option>
+				<option value="15">15</option>
+				<option value="20">20</option>
+				<option value="25">25</option>
+				<option value="30">30</option>
+				<option value="35">35</option>
+				<option value="40">40</option>
+				<option value="45">45</option>
+				<option value="50">50</option>
 			</select>
 		</td>
 		<td style="border: 1px solid grey;">
@@ -70,10 +70,10 @@ echo form_open('c_praticien/index/1/15', $_POST);
 	echo br();
 	echo br();
 	echo "Page numero: ".$num;
-	echo br();
-	echo "Valeur pra_num haut: ".$btnHaut;
-	echo br();
-	echo "Valeur pra_num bas: ".$btnBas;
-	echo br();
+	// echo br();
+	// echo "Valeur pra_num haut: ".$btnHaut;
+	// echo br();
+	// echo "Valeur pra_num bas: ".$btnBas;
+	// echo br();
 }
 ?>

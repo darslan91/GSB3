@@ -223,6 +223,13 @@ class modele_thibault extends CI_Model{
     return $query;  
   }
 
+  public function getPraticien($btnHaut, $btnBas){
+    $req = "SELECT pra_num, pra_prenom, pra_nom, pra_cp, typ_code ".
+           "FROM praticien ".
+           "WHERE pra_num BETWEEN '$btnBas' AND '$btnHaut'";
+    $query = $this->db->query($req)->result();
+    return $query;
+  }
   /* --------------------------------------------------- */
 
 
