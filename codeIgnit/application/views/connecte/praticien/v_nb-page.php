@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 echo form_open('c_praticien/index/1/15', $_POST);
 ?>
-<table style="border: 1px solid grey; margin-bottom: 2px;">
+<table style="border: 1px solid grey; margin-bottom: 2px; margin-bottom: 1%;">
 	<tr>
 		<th style="border: 1px solid grey;">Nom</th>
 		<th style="border: 1px solid grey;">Localisation</th>

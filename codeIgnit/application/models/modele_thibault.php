@@ -258,6 +258,14 @@ class modele_thibault extends CI_Model{
     $query = $this->db->query($req)->result();
     return $query;
   }
+
+  public function getPraticienDetail($id){
+    $req = "SELECT pra_num, pra_adresse, pra_ville, rplc, pra_prenom, pra_nom, pra_cp, typ_code ".
+           "FROM praticien ".
+           "WHERE pra_num = '$id'";
+    $query = $this->db->query($req)->result();
+    return $query;
+  }
   /* --------------------------------------------------- */
 
 

@@ -76,8 +76,7 @@ class c_praticien extends CI_Controller{
             if($_POST['nom'] != "indef" && $_POST['cp'] != "indef"){
                 $data['praticien'] = $this->modele_thibault->getPraticienCpNom($btnHaut, $btnBas, $_POST['cp'], $_POST['nom']);
             }
-        }
-        
+        }        
 
             //Haut + menu
         $this->load->view('connecte/v_haut');
@@ -212,10 +211,15 @@ class c_praticien extends CI_Controller{
             $idVis = $key->vis_matricule;
         }
         
+        $data['praticien'] = $this->modele_thibault->getPraticienDetail($id); 
+
             //Haut + menu
         $this->load->view('connecte/v_haut');
         $this->load->view('connecte/v_menu');
         
+            //Corps
+        $this->load->view('connecte/praticien/v_tableau-praticien-detail', $data);
+
             //Bas
         $this->load->view('connecte/v_bas');
     }
