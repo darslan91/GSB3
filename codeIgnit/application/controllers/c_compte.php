@@ -164,6 +164,17 @@ class c_compte extends CI_Controller{
         $erreur = false;
         $erreurCode = array("Erreur :");
 
+			//Eviter les erreur de type ' ou <?php
+		foreach ($_POST as $key => $value) {
+			if (is_string($value)) {
+				$_POST[$key] = htmlspecialchars(str_replace("'","\'",$value));
+			}else{
+				foreach ($value as $clef => $value2) {
+					$_POST[$key][$clef] = htmlspecialchars($value2);
+				}
+			}
+		}
+		
             //Haut + menu
         $this->load->view('connecte/v_haut');
         $this->load->view('connecte/v_menu');
