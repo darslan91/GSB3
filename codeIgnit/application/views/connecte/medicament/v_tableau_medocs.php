@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 <!-- TABLEAUX MEDICAMENTS -->
-<table class="table">
+<table class="table" style="max-height: 400px; overflow: scroll;">
     <tr class="table">
         <th>Dépôt Légal</th>
         <th>Nom Commercial</th>
