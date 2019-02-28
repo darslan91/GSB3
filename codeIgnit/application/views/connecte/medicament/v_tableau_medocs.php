@@ -33,14 +33,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <th>Dépôt Légal</th>
             <th>Nom Commercial</th>
             <th>Code Famille Médicament</th>
-            <th>Médicament Composition</th>
+            <th>Détails</th>
+            <!--<th>Médicament Composition</th>-->
             <th> </th><!-- Caractère invisible avec alt+255 -->
             <th> </th><!-- Caractère invisible avec alt+255 -->
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td colspan="6"><!-- Adapter le nombre en fonction du nombre de <th> au dessus -->
+            <td colspan="7"><!-- Adapter le nombre en fonction du nombre de <th> au dessus -->
                 <table id="tableau-scroll">
                     <?php 
                     foreach ($medicament as $key){
@@ -49,7 +50,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td><?php echo $key->med_depotlegal;?></td>
                         <td><?php echo $key->med_nomcommercial;?></td>
                         <td><?php echo $key->fam_code;?></td>
-                        <td><?php echo $key->med_composition;?></td>
+
+                        <!--<td><?php echo $key->med_composition;?></td>-->
                     </tr>
                     <?php
                     }

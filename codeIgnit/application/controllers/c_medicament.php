@@ -9,7 +9,7 @@ class c_medicament extends CI_Controller{
     /**
      * Fonction index()
      * --------------------
-     * Cette fonction permet de cherger les helpers, le modèle, 
+     * Cette fonction permet de cherger les helpers, le modèle, les vues
      */
     public function index(){
         //Helper
@@ -24,16 +24,29 @@ class c_medicament extends CI_Controller{
 	        $data[0]["med_depotlegal"] = "Aucun Numéro";
         }
 
-        //Views
+        //VIEWS
+        //Hauts
         $this->load->view('connecte/v_haut');
         $this->load->view('connecte/v_menu');
+        //Medicament
         $this->load->view('connecte/medicament/v_tableau_medocs', $data);
+        //Footer
         $this->load->view('connecte/v_bas');
+        //Recherche
 //        $this->load->view('');
         
     
 
     }
+
+    public function detail($id){
+        /* HELPERS */
+        $this->load->helper('html');
+        $this->load->helper('form');
+        /* MODELE */
+        $this->load->model('modele_deniz');
+    }
+
 
 
 }
