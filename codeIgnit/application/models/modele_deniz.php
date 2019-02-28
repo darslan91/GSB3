@@ -7,10 +7,11 @@ class modele_deniz extends CI_Model{
         $this->load->database();
     }
     
+    
     /**
      * getLesMedicaments()
      * -------------------------------
-     * Cette fonction permet de récuperer tout les médicaments contenue dans la tables médicament
+     * Cette fonction permet de récuperer tout les médicaments contenue dans la table médicament
      */
     public function getLesMedicaments(){
         $req="SELECT med_depotlegal,med_nomcommercial,fam_code,med_composition,med_effets,med_contreindic,med_prixechantillon AS prix FROM medicament ORDER BY med_depotlegal";
@@ -24,10 +25,15 @@ class modele_deniz extends CI_Model{
      * getDetailsMedicament($id)
      * -------------------------------
      * Cette fonction permet de retourner les détails  du médicament grâce à l'id du médicament
+     * 
      */
     public function getDetailsMedicament($id){
-        $req="SELECT med_depotlegal,med_nomcommercial,fam_code,med_composition,med_effets,med_contreindic,med_prixechantillon AS prix FROM medicament WHERE med_depotlegal = ?";
-        $req
+        //La rêquete
+        $req="SELECT med_nomcommercial,fam_code,med_composition,med_effets,med_contreindic,med_prixechantillon AS prix FROM medicament WHERE med_depotlegal = ?";
+        //Faire passer et executer la requête
+        $result = $this->db->query($req, $id);
+        
+        return $result;
     }
 
 
