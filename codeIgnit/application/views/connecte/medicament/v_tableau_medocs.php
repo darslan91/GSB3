@@ -2,35 +2,62 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
-<!-- TABLEAUX MEDICAMENTS -->
-<div style="max-height: 400px; overflow: auto;">
-    <table class="table">
-        <tr class="table">
+<style>
+    table{
+        border-collapse: collapse;
+    }
+
+    thead, tfoot{
+        background-color: plum;
+    }
+
+    tbody{
+        background-color: pink;
+    }
+
+    #tableau-neutre{
+        border: 1px solid black;
+        margin: auto;
+    }
+
+    #tableau-scroll{
+        display: inline-block;
+        overflow: auto;
+        height: 150px;
+    }
+</style>
+
+<table id="tableau-neutre">
+    <thead>
+        <tr>
             <th>Dépôt Légal</th>
             <th>Nom Commercial</th>
             <th>Code Famille Médicament</th>
-            <th>Médicament Composition</th>
-            <!-- <th>Médicament Effets</th> -->
-            <!-- <th>Médicament Contre-indications</th> -->
-            <!-- <th>Prix Echantillon</th> -->
+            <th>Détails</th>
+            <!--<th>Médicament Composition</th>-->
+            <th> </th><!-- Caractère invisible avec alt+255 -->
+            <th> </th><!-- Caractère invisible avec alt+255 -->
         </tr>
-        
-        <!-- Début tableau -->
-        <?php 
-        foreach ($medicament as $key){
-        ?>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="7"><!-- Adapter le nombre en fonction du nombre de <th> au dessus -->
+                <table id="tableau-scroll">
+                    <?php 
+                    foreach ($medicament as $key){
+                    ?>
+                    <tr>
+                        <td><?php echo $key->med_depotlegal;?></td>
+                        <td><?php echo $key->med_nomcommercial;?></td>
+                        <td><?php echo $key->fam_code;?></td>
 
-        <tr class="table">
-            <td><?php echo $key->med_depotlegal?></td>
-            <td><?php echo $key->med_nomcommercial?></td>
-            <td><?php echo $key->fam_code?></td>
-            <td><?php echo $key->med_composition?></td>
-            <!-- <td><?php echo $key->med_effets?></td> -->
-            <!-- <td><?php echo $key->med_contreindic?></td> -->
-            <!-- <td><?php echo $key->prix?></td> -->
+                        <!--<td><?php echo $key->med_composition;?></td>-->
+                    </tr>
+                    <?php
+                    }
+                    ?>
+                </table>
+            </td>
         </tr>
-        <?php
-        }
-        ?>
-    </table>
-</div>
+    </tbody>
+</table>
