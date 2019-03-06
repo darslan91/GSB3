@@ -6,17 +6,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <p>
     <h3>Dépôt Légal : </h3>
-    <!-- Ligne pour afficher le contenue -->
+    <?php echo $medicament[0]->med_depotlegal;?>
 </p>
 
 <p>
     <h3>Nom Commercial : </h3>
-    <!-- Ligne pour afficher le contenue -->
+    <?php echo $medicament[0]->med_nomcommercial;?>
 </p>
 
 <p>
     <h3>Code Famille Medicament : </h3>
-    <!-- Ligne pour afficher le contenue -->
+    <?php echo $medicament[0]->fam_code;?>
     <br/>
     <h3>Libellé Famille Médicament : </h3>
     <!-- Ligne pour afficher le contenue -->
@@ -24,22 +24,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <p>
     <h3>Composition du Médicament : </h3>
-    <!-- Ligne pour afficher le contenue -->
+    <br/>
+    <?php echo $medicament[0]->med_composition;?>
 </p>
 
 <p>
     <h3>Effet du Médicament : </h3>
-    <!-- Ligne pour afficher le contenue -->
+    <?php echo $medicament[0]->med_effet;?>
 </p>
 
 <p>
     <h3>Contre-indications du Médicament : </h3>
-    <!-- Ligne pour afficher le contenue -->
+    <?php echo $medicament[0]->med_contreindic;?>
 </p>
 
 <p>
     <h3>Prix de l'échantillon : </h3>
-    <!-- Ligne pour afficher le contenue -->
+    <?php echo $medicament[0]->prix;?>
 </p>
 
 <form method="post">
