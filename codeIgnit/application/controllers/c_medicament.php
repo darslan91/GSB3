@@ -32,13 +32,16 @@ class c_medicament extends CI_Controller{
         $this->load->view('connecte/medicament/v_recherche_medicament');
         //Footer
         $this->load->view('connecte/v_bas');
-        //Recherche
-
-        
     
 
     }
-
+    /**
+     * Fonction detail($id)
+     * ---------------------
+     * @id = l'id du médicament
+     * 
+     * Cette fonction permet d'afficher dans une fenêtre le détail d'un medicament
+     */
     public function detail($id){
         /* HELPERS */
         $this->load->helper('html');
@@ -51,6 +54,38 @@ class c_medicament extends CI_Controller{
 
         /* VIEW */
         $this->load->view('connecte/medicament/v_details_medicaments', $data);
+    }
+
+
+    /**
+     * Fonction rechercheNom($str)
+     * ---------------------------------
+     * @str = chaîne de caractères qui contient ce que le visiteur à taper dans la recherche
+     * 
+     * Cette fonction permet d'afficher le résultat de la recherche d'une autre fenêtre
+     */
+    public function rechercheNom(){
+        /* HELPERS */
+        $this->load->helper('html');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        /* MODELE */
+        $this->load->model('modele_deniz');
+
+        /* MISE  EN PLACE D'UNE REGLE */
+        $this->form_validation->set_rules('nom', 'Nom recherché :', 'required');
+
+        /* APPLICATION DE CETTE REGLE */
+        if($this->form_validation->run() == TRUE){
+            $str = $this->input->post('nom');
+        }        
+
+        /* EXECUTION DE LA REQUETE */ 
+        $data['medicament'] = $this->modele_deniz->getSearchNom($str);
+
+        /* VIEW */
+        $this->load->views('connecte/medicament/v_result_research_name', $data);
     }
 
 }

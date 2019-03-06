@@ -27,7 +27,6 @@ class modele_deniz extends CI_Model{
      * getDetailsMedicament($id)
      * -------------------------------
      * Cette fonction permet de retourner les détails  du médicament grâce à l'id du médicament
-     * 
      */
     public function getDetailsMedicament($id){
         //La rêquete
@@ -35,6 +34,14 @@ class modele_deniz extends CI_Model{
         //Faire passer et executer la requête
         $result = $this->db->query($req)->result();
         
+        return $result;
+    }
+
+
+    public function getSearchMedNom($str){
+        $req="SELECT med_depotlegal, med_nomcommercial FROM medicament WHERE med_nomcommercial LIKE('.$str.%')";
+        $result = $this->db->query($req)->result();
+
         return $result;
     }
 
