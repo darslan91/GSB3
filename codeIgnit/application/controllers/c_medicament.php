@@ -48,7 +48,7 @@ class c_medicament extends CI_Controller{
         $data['medicament'] = $this->modele_deniz->getDetailsMedicament($id);
 
         /* VIEW */
-        $this->load->view('connecte/medicament/v_details_medicaments', $data);
+        $this->load->view('../connecte/medicament/v_details_medicaments', $data);
     }
 
 }
