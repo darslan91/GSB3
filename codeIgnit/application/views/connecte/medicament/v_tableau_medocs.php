@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td><?php echo $key->med_depotlegal;?></td>
                         <td><?php echo $key->med_nomcommercial;?></td>
                         <td><?php echo $key->fam_code;?></td>
-                        <td><a href="detail/<?php echo $key->med_depotlegal;?>" target="wclose" onclick="window.open('c_medicament/detail/<?php echo $key->med_depotlegal;?>','wclose', 'width=500,height=400,toolbar=no,status=no,left=60,top=110')">Plus</a></td>
+                        <td><?php echo anchor('c_medicament/detail/'.$key->med_depotlegal.'','Plus'); ?></td>
                     </tr>
                     <?php
                     }
