@@ -28,10 +28,12 @@ class c_medicament extends CI_Controller{
         $this->load->view('connecte/v_menu');
         //Medicament
         $this->load->view('connecte/medicament/v_tableau_medocs', $data);
+        //Recherche
+        $this->load->view('connecte/medicament/v_recherche_medicament');
         //Footer
         $this->load->view('connecte/v_bas');
         //Recherche
-//        $this->load->view('');
+
         
     
 
