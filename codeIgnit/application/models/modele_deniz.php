@@ -16,7 +16,9 @@ class modele_deniz extends CI_Model{
     public function getLesMedicaments(){
         $req="SELECT med_depotlegal,med_nomcommercial,fam_code,med_composition,med_effets,med_contreindic,med_prixechantillon AS prix FROM medicament ORDER BY med_depotlegal";
         $query=$this->db->query($req)->result();
-        
+        // CETTE PERMET DE RECUPERER TOUT LES ELEMENTS DE CETTE TABLE " MEDICAMENT "
+        //$queryTest = $this->db->get('medicament');
+
         return $query;
     }
 
