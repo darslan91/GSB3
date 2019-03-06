@@ -27,6 +27,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
 </style>
 
+
+<h2> Tableau des médicaments </h2>
+
 <table id="tableau-neutre">
     <thead>
         <tr>
@@ -49,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td><?php echo $key->med_depotlegal;?></td>
                         <td><?php echo $key->med_nomcommercial;?></td>
                         <td><?php echo $key->fam_code;?></td>
-                        <td><?php echo anchor('c_medicament/detail/'.$key->med_depotlegal.'','Plus'); ?></td>
+                        <td><a href="detail/<?php echo $key->med_depotlegal;?>" target="wclose" onclick="window.open('detail/<?php echo $key->med_depotlegal;?>','wclose', 'width=500,height=700,toolbar=no,status=no,left=60,top=110')">Plus</a></td>
                     </tr>
                     <?php
                     }

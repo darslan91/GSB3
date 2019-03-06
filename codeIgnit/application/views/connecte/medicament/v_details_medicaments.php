@@ -1,6 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
+<style>
+    h1{
+        text-align: center;
+    }
+</style>
+
+
 
 <h1>Information sur le médicament</h1>
 
@@ -17,30 +24,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <p>
     <h3>Code Famille Medicament : </h3>
     <?php echo $medicament[0]->fam_code;?>
-    <br/>
     <h3>Libellé Famille Médicament : </h3>
-    <!-- Ligne pour afficher le contenue -->
+    <?php echo $medicament[0]->fam_libelle;?>
 </p>
 
 <p>
     <h3>Composition du Médicament : </h3>
-    <br/>
     <?php echo $medicament[0]->med_composition;?>
 </p>
 
 <p>
     <h3>Effet du Médicament : </h3>
-    <?php echo $medicament[0]->med_effet;?>
+    <?php echo $medicament[0]->med_effets;?>
 </p>
 
 <p>
     <h3>Contre-indications du Médicament : </h3>
     <?php echo $medicament[0]->med_contreindic;?>
-</p>
-
-<p>
-    <h3>Prix de l'échantillon : </h3>
-    <?php echo $medicament[0]->prix;?>
 </p>
 
 <form method="post">
