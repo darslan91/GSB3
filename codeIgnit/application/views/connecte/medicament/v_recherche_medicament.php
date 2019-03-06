@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     echo br(2);
 
     //Saisie du nom du médicament recherché
-    echo form_label('Nom recherché :', 'nom');
+    echo form_label('Nom recherché : ', 'nom');
     echo form_input('nom', set_value('nom'));
 ?>
-<a href="rechercheNom/nom" target="wclose" onclick="window.open('rechercheNom/nom','wclose', 'width=500,height=700,toolbar=no,status=no,left=60,top=110')"><?php echo form_submit('valid','Rechercher');?></a>
+<a href="rechercheNom" target="wclose" onclick="window.open('rechercheNom','wclose', 'width=500,height=700,toolbar=no,status=no,left=60,top=110')"><?php echo form_submit('valid','Rechercher');?></a>

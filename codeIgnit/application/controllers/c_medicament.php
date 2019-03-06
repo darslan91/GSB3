@@ -65,27 +65,30 @@ class c_medicament extends CI_Controller{
      * Cette fonction permet d'afficher le résultat de la recherche d'une autre fenêtre
      */
     public function rechercheNom(){
+        /* DATABASE */
+        $this->load->database();
+
         /* HELPERS */
         $this->load->helper('html');
         $this->load->helper('form');
+
+        /* LIBRARY */
         $this->load->library('form_validation');
 
         /* MODELE */
         $this->load->model('modele_deniz');
 
         /* MISE  EN PLACE D'UNE REGLE */
-        $this->form_validation->set_rules('nom', 'Nom recherché :', 'required');
+        $this->form_validation->set_rules('nom', 'Nom recherché : ', 'required');
 
-        /* APPLICATION DE CETTE REGLE */
+        /* APPLICATION DE LA REGLE */
         if($this->form_validation->run() == TRUE){
-            $str = $this->input->post('nom');
-        }        
-
-        /* EXECUTION DE LA REQUETE */ 
-        $data['medicament'] = $this->modele_deniz->getSearchNom($str);
-
-        /* VIEW */
-        $this->load->views('connecte/medicament/v_result_research_name', $data);
+            $nomSearch = $this->input->post('nom');
+            // Appel de la méthode dans le modèle 
+            $data['medicament'] = $this->modele_deniz->getSearchMedNom($nomSearch);
+            // Appel de la vue qui affiche les détails
+            $this->load->views('connecte/medicament/v_result_research_name', $data);
+        }
 
         /* RAFFRAICHIR LA PAGE */
         $this->index();
