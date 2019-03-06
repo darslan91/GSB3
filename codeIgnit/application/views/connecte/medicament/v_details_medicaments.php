@@ -41,3 +41,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <h3>Prix de l'échantillon : </h3>
     <!-- Ligne pour afficher le contenue -->
 </p>
+
+<form method="post">
+    <p align="center">
+        <input type="button" value="Fermer la fenêtre" onClick="window.close()">
+    </p>
+</form>	

@@ -31,7 +31,7 @@ class modele_deniz extends CI_Model{
      */
     public function getDetailsMedicament($id){
         //La rêquete
-        $req="SELECT med_nomcommercial,fam_code,med_composition,med_effets,med_contreindic,med_prixechantillon AS prix FROM medicament WHERE med_depotlegal = ?";
+        $req="SELECT med_nomcommercial,fam_code,med_composition,med_effets,med_contreindic,med_prixechantillon AS prix FROM medicament WHERE med_depotlegal = '$id'";
         //Faire passer et executer la requête
         $result = $this->db->query($req, $id);
         

@@ -14,8 +14,6 @@ class c_medicament extends CI_Controller{
     public function index(){
         //Helper
         $this->load->helper('html');
-
-        //Model
         $this->load->model('modele_deniz');
 
         //Gestion tableau médicaments
@@ -45,21 +43,14 @@ class c_medicament extends CI_Controller{
         $this->load->helper('form');
         /* MODELE */
         $this->load->model('modele_deniz');
+
+        /* EXECUTION DE LA REQUETE */
+        $data['medicament'] = $this->modele_deniz->getDetailsMedicament($id);
+
+        /* VIEW */
+        $this->load->view('connecte/medicament/v_details_medicaments', $data);
     }
 
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
