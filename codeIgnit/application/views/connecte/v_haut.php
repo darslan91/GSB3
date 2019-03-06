@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $this->load->helper('url');
+$this->load->helper('form');
 ?>
 <!DOCTYPE html>
 <html lang="en">
