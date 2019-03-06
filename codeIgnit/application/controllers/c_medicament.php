@@ -86,6 +86,9 @@ class c_medicament extends CI_Controller{
 
         /* VIEW */
         $this->load->views('connecte/medicament/v_result_research_name', $data);
+
+        /* RAFFRAICHIR LA PAGE */
+        $this->index();
     }
 
 }
