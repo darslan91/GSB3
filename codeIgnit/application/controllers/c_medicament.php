@@ -89,9 +89,12 @@ class c_medicament extends CI_Controller{
             // Appel de la vue qui affiche les détails
             $this->load->views('connecte/medicament/v_result_research_name', $data);
         }
+        else{
+            echo "Erreur dans le chargment de la fenêtre.";
+        }
 
         /* RAFFRAICHIR LA PAGE */
-        $this->index();
+        //$this->index();
     }
 
 }
