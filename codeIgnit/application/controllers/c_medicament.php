@@ -79,7 +79,7 @@ class c_medicament extends CI_Controller{
         $this->load->model('modele_deniz');
 
         /* MISE  EN PLACE D'UNE REGLE */
-        $this->form_validation->set_rules('nom', 'Nom recherché : ', 'required');
+        //$this->form_validation->set_rules('nom', 'Nom recherché : ', 'required');
 
         /* APPLICATION DE LA REGLE */
         if($this->form_validation->run() == TRUE){
@@ -88,6 +88,7 @@ class c_medicament extends CI_Controller{
             $data['medicament'] = $this->modele_deniz->getSearchMedNom($nomSearch);
             // Appel de la vue qui affiche les détails
             $this->load->views('connecte/medicament/v_result_research_name', $data);
+            //echo $nomSearch;
         }
         else{
             echo "Erreur dans le chargment de la fenêtre.";
