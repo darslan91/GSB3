@@ -37,6 +37,7 @@ class modele_deniz extends CI_Model{
         return $result;
     }
 
+
     /**
      * getSearchMedNom($str)
      * --------------------------
@@ -48,6 +49,33 @@ class modele_deniz extends CI_Model{
 
         return $result;
     }
+
+
+    /**
+     * getTypePraticien()
+     * -------------------------
+     * Cette fonction permet de récupérer le type des praticiens (code, libelle)
+     */
+    public function getTypePraticien(){
+        $req="SELECT typ_code, typ_libelle FROM engine_praticien;";
+        $result=$this->db->query($req)->result();
+
+        return $result;
+    }
+    
+
+    /**
+     * addNewPrat()
+     * ---------------------------
+     * Cette fonction permet d'ajouté un nouveau praticien dans la base de donnée
+     */
+    public function addNewPrat(){
+        $req="";
+        $result=$this->db->query($req)->result();
+
+        return $result;
+    }
+
 
 
 }

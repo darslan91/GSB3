@@ -141,7 +141,7 @@ class c_praticien extends CI_Controller{
         $this->load->helper('html');
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->load->model('modele_thibault');
+        $this->load->model('modele_deniz');
         
             //Haut + menu
         $this->load->view('connecte/v_haut');
