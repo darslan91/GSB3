@@ -79,7 +79,7 @@ class c_medicament extends CI_Controller{
         $this->load->model('modele_deniz');
 
         /* MISE  EN PLACE D'UNE REGLE */
-        //$this->form_validation->set_rules('nom', 'Nom recherché : ', 'required');
+        $this->form_validation->set_rules('nom', 'Nom recherché : ', 'required');
 
         /* APPLICATION DE LA REGLE */
         if($this->form_validation->run() == TRUE){

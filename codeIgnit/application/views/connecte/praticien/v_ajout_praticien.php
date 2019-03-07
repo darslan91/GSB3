@@ -5,6 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- /* --------------------------------------------------- */
 //Formulaire pour ajouté un nouveau praticien
 /* --------------------------------------------------- */ -->
+
 <h3>Nouveau particien</h3>
 <div style="overflow-x:auto;" class="compte-rendu">
     <!-- Début des civilités (1er tableau)-->
@@ -14,10 +15,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <th>Prénom</th>
         </tr>
 
-        <?php echo form_open('c_praticien/nouveau_validation', $_POST);?>
+        <?php echo form_open('c_praticien/nouveau_validation');?>
+        
         <tr>
-            <td><?php echo form_input('nom', set_value('nom'));?></td>
-            <td><?php echo form_input('prenom', set_value('prenom'));?></td>
+            <td><?php echo form_input('nom');?></td>
+            <td><?php echo form_input('prenom');?></td>
         </tr>
     </table>
     <!-- Fin des civilités (1er tableau)-->
@@ -31,9 +33,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </tr>
 
         <tr>
-            <td><?php echo form_input('adresse', set_value('adresse'));?></td>
-            <td><?php echo form_input('cp', set_value('cp'));?></td>
-            <td><?php echo form_input('ville', set_value('ville'));?></td>
+            <td><?php echo form_input('adresse');?></td>
+            <td><?php echo form_input('cp');?></td>
+            <td><?php echo form_input('ville');?></td>
         </tr>
     </table>
     <!-- Fin Adresse (2ème tableau) -->
@@ -59,7 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </td>
 
             <!-- Champ pour sasir la notorité -->
-            <td><?php echo form_input('notorite', set_values('notorite'));?></td>
+            <td><?php echo form_input('notorite');?></td>
 
             <!-- Remplacent ou pas -->
             <td>
