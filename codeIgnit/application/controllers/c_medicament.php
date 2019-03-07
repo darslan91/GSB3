@@ -56,12 +56,10 @@ class c_medicament extends CI_Controller{
         $this->load->view('connecte/medicament/v_details_medicaments', $data);
     }
 
-
+    
     /**
-     * Fonction rechercheNom($str)
+     * Fonction rechercheNom()
      * ---------------------------------
-     * @str = chaîne de caractères qui contient ce que le visiteur à taper dans la recherche
-     * 
      * Cette fonction permet d'afficher le résultat de la recherche d'une autre fenêtre
      */
     public function rechercheNom(){
