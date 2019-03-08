@@ -35,6 +35,8 @@ class c_medicament extends CI_Controller{
     
 
     }
+
+
     /**
      * Fonction detail($id)
      * ---------------------
@@ -77,20 +79,25 @@ class c_medicament extends CI_Controller{
         $this->load->model('modele_deniz');
 
         /* MISE  EN PLACE D'UNE REGLE */
-        $this->form_validation->set_rules('nom', 'Nom recherché : ', 'required');
+        $this->form_validation->set_rules('nom', 'Erreur sur le nom', 'required');
 
         /* APPLICATION DE LA REGLE */
         if($this->form_validation->run() == TRUE){
             $nomSearch = $this->input->post('nom');
+            //echo $nomSearch;
             // Appel de la méthode dans le modèle 
             $data['medicament'] = $this->modele_deniz->getSearchMedNom($nomSearch);
+
+            //TESTTTTTT
+            /*echo $data['medicament']['med_depotlegal'][0];
+            echo $data['medicament']['med_nomcommercial'][0];
+            echo $data['medicament']['med_nomcommercial'][1];*/
+
             // Appel de la vue qui affiche les détails
-            $this->load->views('connecte/medicament/v_result_research_name', $data);
+            $this->load->view('connecte/medicament/v_result_research_name', $data);
             //echo $nomSearch;
         }
-        else{
-            echo "Erreur dans le chargment de la fenêtre.";
-        }
+        
 
         /* RAFFRAICHIR LA PAGE */
         //$this->index();

@@ -44,10 +44,20 @@ class modele_deniz extends CI_Model{
      * Cette fonction permet de trouver le nom des médicament qui pourrait coller à la chaîne de caractères passer en paramètre.
      */
     public function getSearchMedNom($str){
-        $req="SELECT med_depotlegal, med_nomcommercial FROM medicament WHERE med_nomcommercial LIKE('.$str.%')";
-        $result = $this->db->query($req)->result();
+        $req="SELECT med_depotlegal, med_nomcommercial FROM medicament WHERE med_nomcommercial LIKE('$str%')";
+        $query = $this->db->query($req);
 
-        return $result;
+        $med_depotlegal = array();
+        $med_nomcommercial= array();
+
+        foreach ($query->result() as $row) {
+            $med_depotlegal[] = $row->med_depotlegal;
+            $med_nomcommercial[] = $row->med_nomcommercial;
+        }
+        
+        $liste = array('med_depotlegal' => $med_depotlegal, 'med_nomcommercial' => $med_nomcommercial);
+
+        return $liste;
     }
 
 

@@ -92,5 +92,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </code>
 
     <?php echo form_close();?>
-    <?php echo anchor('c_compte/index','Retour')?>
+    <?php echo anchor('c_compte/index','Retour');?>
 </div>
