@@ -148,8 +148,11 @@ class c_praticien extends CI_Controller{
         $this->load->view('connecte/v_menu');
         $this->load->view('connecte/praticien/v_menu-praticien');
 
+            // Méthode afficher les spécialitées
+        $data['spe']= $this->modele_deniz->getTypePraticien();
+
             //Formulaire
-        $this->load->view('connecte/praticien/v_ajout_praticien');
+        $this->load->view('connecte/praticien/v_ajout_praticien', $data);
         
             //Bas
         $this->load->view('connecte/v_bas');
@@ -167,11 +170,12 @@ class c_praticien extends CI_Controller{
     */
 /* --------------------------------------------------- */   
     function nouveau_validation(){
-         /* CHARGEMENT */
-            //Helper
+        /* CHARGEMENT */
+            //Helpers
         $this->load->helper('html');
         $this->load->helper('form');
         $this->load->library('form_validation');
+        $this->load->database();
         $this->load->model('modele_deniz');
         
             //R�cup�ration id
@@ -183,6 +187,17 @@ class c_praticien extends CI_Controller{
         $erreur = false;
         $erreurCode = array("Erreur :");
 
+        /* CREATION DES REGLES */
+        $this->form_validation->set_rules('nom', 'Nom', 'required');
+        $this->form_validation->set_rules('prenom', 'Prenom', 'required');
+        $this->form_validation->set_rules('adresse', 'Adresse', 'required');
+        $this->form_validation->set_rules('cp', 'CP', 'required');
+        $this->form_validation->set_rules('ville', 'Ville', 'required');
+        $this->form_validation->set_rules('speCode', 'Spécialité', 'required');
+        $this->form_validation->set_rules('nom', 'Nom', 'required');
+        $this->form_validation->set_rules('notoriete', 'COEF_NOTORIETE', 'required');
+        $this->form_validation->set_rules('remplCode', 'Remplacant', 'required');
+        
             //Haut + menu
         $this->load->view('connecte/v_haut');
         $this->load->view('connecte/v_menu');

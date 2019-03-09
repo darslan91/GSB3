@@ -60,8 +60,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </select>
             </td>
 
-            <!-- Champ pour sasir la notorité -->
-            <td><?php echo form_input('notorite');?></td>
+            <!-- Champ pour sasir la notorieté -->
+            <td><?php echo form_input('notoriete');?></td>
 
             <!-- Remplacent ou pas -->
             <td>
