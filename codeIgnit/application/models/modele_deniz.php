@@ -79,11 +79,22 @@ class modele_deniz extends CI_Model{
      * ---------------------------
      * Cette fonction permet d'ajouté un nouveau praticien dans la base de donnée
      */
-    public function addNewPrat($nom, $prenom, $adresse, $cp, $ville, $spe, $coef, $rplc){
-        $req="INSERT INTO praticien (pra_nom, pra_prenom, pra_adresse, pra_cp, pra_ville, typ_code, pra_coefnotoriete, rplc) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
-        
+    public function addNewPrat($nom, $prenom, $adresse, $cp, $ville, $coef, $spe, $rplc){
+        /*$req="INSERT INTO praticien (pra_nom, pra_prenom, pra_adresse, pra_cp, pra_ville, typ_code, pra_coefnotoriete, rplc) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";*/
+        $this->load->database();
 
-        return $req;
+        $data  = array(
+            'pra_nom' => $nom,
+            'pra_prenom' => $prenom,
+            'pra_adresse' => $adresse,
+            'pra_cp' => $cp,
+            'pra_ville' => $ville,
+            'pra_coefnotoriete' => $coef,
+            'typ_code' => $spe, 
+            'rplc' => $rplc
+        );
+
+        $this->db->insert('praticien', $data);
     }
 
 

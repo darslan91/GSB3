@@ -24,6 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </table>
     <!-- Fin des civilités (1er tableau)-->
 
+<?php echo br();?>
+
     <!-- Début Adresse (2ème tableau) -->
     <table class="table">
         <tr class="table">
@@ -40,15 +42,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </table>
     <!-- Fin Adresse (2ème tableau) -->
 
+<?php echo br();?>
+
     <!-- Début Autres informations (3ème tableau) -->
     <table class="table">
         <tr class="table">
+            <th>Coefficient de notorieté</th>
             <th>Spécialité</th>
-            <th>Coefficient de notorité</th>
             <th>Remplacent</th>
         </tr>
 
         <tr>
+
+            <!-- Champ pour sasir la notorieté -->
+            <td><?php echo form_input('notoriete');?></td>
+
             <!-- Afficher les spécialitées possibles -->
             <td>
                 <select name= "speCode">
@@ -60,19 +68,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </select>
             </td>
 
-            <!-- Champ pour sasir la notorieté -->
-            <td><?php echo form_input('notoriete');?></td>
-
             <!-- Remplacent ou pas -->
             <td>
                 <select name ="remplCode">
-                    <option value="0">OUI</option>
                     <option value="0">NON</option>
+                    <option value="1">OUI</option>
                 </select>
             </td>
         </tr>
     </table>
     <!-- Fin Autres informations (3ème tableau) -->
+
+<?php echo br();?>
 
     <!-- Bouton Ajouté -->
     <p style="text-align: center;">

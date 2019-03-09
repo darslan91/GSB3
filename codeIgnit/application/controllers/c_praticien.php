@@ -178,14 +178,14 @@ class c_praticien extends CI_Controller{
         $this->load->database();
         $this->load->model('modele_deniz');
         
-            //R�cup�ration id
+        /*    //R�cup�ration id
         $this->load->library('session');
         $idVisArray = $this->session->idVis;
         foreach ($idVisArray as $key){
             $idVis = $key->vis_matricule;
-        }
-        $erreur = false;
-        $erreurCode = array("Erreur :");
+        }*/
+        /*$erreur = false;
+        $erreurCode = array("Erreur :");*/
 
         /* CREATION DES REGLES */
         $this->form_validation->set_rules('nom', 'Nom', 'required');
@@ -198,6 +198,25 @@ class c_praticien extends CI_Controller{
         $this->form_validation->set_rules('notoriete', 'COEF_NOTORIETE', 'required');
         $this->form_validation->set_rules('remplCode', 'Remplacant', 'required');
         
+        /* APPLICATIONS DES REGLES */
+        if($this->form_validation->run() == TRUE){
+            $nom = $this->input->post('nom');
+            $prenom = $this->input->post('prenom');
+            $adresse = $this->input->post('adresse');
+            $cp = $this->input->post('cp');
+            $ville = $this->input->post('ville');
+            $notoriete = $this->input->post('notoriete');
+            $speCode = $this->input->post('speCode');
+            $remplCode = $this->input->post('remplCode');
+
+            $this->modele_deniz->addNewPrat($nom, $prenom, $adresse, $cp, $ville, $notoriete, $speCode, $remplCode);
+
+            echo "Ajout Réussi !!";
+
+        }else{
+            echo "Erreur, un des champs est mal remplis";
+        }
+
             //Haut + menu
         $this->load->view('connecte/v_haut');
         $this->load->view('connecte/v_menu');

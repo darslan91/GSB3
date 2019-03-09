@@ -44,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <th>Détail</th>
     </tr>
 
-    <tr>
+    <tr class="table">
         <td colspan="4">
             <table id="tableau-scroll">
                 <?php
