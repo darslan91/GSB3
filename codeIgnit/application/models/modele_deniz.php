@@ -47,17 +47,20 @@ class modele_deniz extends CI_Model{
         $req="SELECT med_depotlegal, med_nomcommercial FROM medicament WHERE med_nomcommercial LIKE('$str%')";
         $query = $this->db->query($req);
 
-        $med_depotlegal = array();
-        $med_nomcommercial= array();
 
-        foreach ($query->result() as $row) {
-            $med_depotlegal[] = $row->med_depotlegal;
-            $med_nomcommercial[] = $row->med_nomcommercial;
-        }
-        
-        $liste = array('med_depotlegal' => $med_depotlegal, 'med_nomcommercial' => $med_nomcommercial);
+            $med_depotlegal = array();
+            $med_nomcommercial= array();
 
-        return $liste;
+            foreach ($query->result() as $row) {
+                $med_depotlegal[] = $row->med_depotlegal;
+                $med_nomcommercial[] = $row->med_nomcommercial;
+                
+            }
+
+            $liste = array('med_depotlegal' => $med_depotlegal, 'med_nomcommercial' => $med_nomcommercial);
+
+
+        return $liste ;
     }
 
 

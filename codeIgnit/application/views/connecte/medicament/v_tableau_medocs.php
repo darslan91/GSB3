@@ -29,6 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     #tableau-scroll{
         display: inline-block;
         overflow: auto;
+        width: 100%;
         height: 150px;
     }
 </style>
@@ -43,15 +44,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <th>Code Famille Médicament</th>
         <th>Détail</th>
     </tr>
+</table>
 
-    <tr class="table">
-        <td colspan="4">
-            <table id="tableau-scroll">
-                <?php
-                foreach($medicament as $key){ 
-                ?>
-                <tr>
-                    <td><?php echo $key->med_depotlegal;?></td>
+<table id="tableau-scroll">
+    <?php
+    foreach($medicament as $key){ 
+    ?>
+        <tr>
+            <td><?php echo $key->med_depotlegal;?></td>
                     <td><?php echo $key->med_nomcommercial;?></td>
                     <td><?php echo $key->fam_code;?></td>
                     <td><a href="detail/<?php echo $key->med_depotlegal;?>" target="wclose" onclick="window.open('detail/<?php echo $key->med_depotlegal;?>','wclose', 'width=500,height=700,toolbar=no,status=no,left=60,top=110')">Plus</a></td>
@@ -59,7 +59,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <?php
                 } 
                 ?>
-            </table>
-        </td>
-    </tr>
 </table>

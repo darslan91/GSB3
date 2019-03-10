@@ -1,3 +1,6 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?>
 <style>
     h1{
         text-align: center;
@@ -22,7 +25,7 @@
 
 </style>
 
-<h1>Résultat de la recherche par nom</h1>
+<h1>Résultat</h1>
 
     <?php
         /*foreach ($medicament as $value) { 

@@ -1,7 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-
+<style>
+    form{
+        margin-top: -5%;
+    }
+</style>
 <h2>Recherches</h2>
 
 <h3>Rechercher par le nom du médiacament :</h3>
@@ -11,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     echo validation_errors();
 
     //Début du formulaire
-    $attribut = array('target'=> '_blank');
+    $attribut = array('target'=> '_parent');
     echo form_open('c_medicament/rechercheNom', $attribut);
     echo br(2);
 

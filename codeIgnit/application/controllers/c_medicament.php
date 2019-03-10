@@ -84,25 +84,42 @@ class c_medicament extends CI_Controller{
         /* APPLICATION DE LA REGLE */
         if($this->form_validation->run() == TRUE){
             $nomSearch = $this->input->post('nom');
-            //echo $nomSearch;
-            // Appel de la méthode dans le modèle 
-            $data['medicament'] = $this->modele_deniz->getSearchMedNom($nomSearch);
 
             //TESTTTTTT
             /*echo $data['medicament']['med_depotlegal'][0];
             echo $data['medicament']['med_nomcommercial'][0];
             echo $data['medicament']['med_nomcommercial'][1];*/
 
-            // Appel de la vue qui affiche les détails
-            $this->load->view('connecte/medicament/v_result_research_name', $data);
-            //echo $nomSearch;
-        }else{
-            $this->index();
-        }
-        
+            //Gestion tableau médicaments
+            $data['medicament']= $this->modele_deniz->getLesMedicaments();
+                if (empty($data)) {
+	                $data[0]["med_depotlegal"] = "Aucun Numéro";
+                }
 
-        /* RAFFRAICHIR LA PAGE */
-        //$this->index();
+            // Appel de la méthode dans le modèle 
+            $data_result['medicament'] = $this->modele_deniz->getSearchMedNom($nomSearch);
+            //var_dump($data_result['medicament']);
+
+
+            // Appel des vue pour afficher 
+            $this->load->view('connecte/v_haut');
+            $this->load->view('connecte/v_menu');
+            $this->load->view('connecte/medicament/v_tableau_medocs', $data);
+            $this->load->view('connecte/medicament/v_recherche_medicament'); 
+
+            if(empty($data_result['medicament']['med_depotlegal']) && empty($data_result['medicament']['med_nomcommercial'])){
+                //echo "if";
+                //$this->load->view('connecte/medicament/v_result_research_name', $data_result);
+                $this->load->view('connecte/medicament/v_result_vide', $data_result);
+            }else{
+                //echo "else";
+                //$this->load->view('connecte/medicament/v_result_vide', $data_result);
+                $this->load->view('connecte/medicament/v_result_research_name', $data_result);
+            }
+
+            $this->load->view('connecte/v_bas');
+        }
+
     }
 
 }
