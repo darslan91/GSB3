@@ -146,13 +146,14 @@ class c_praticien extends CI_Controller{
             //Haut + menu
         $this->load->view('connecte/v_haut');
         $this->load->view('connecte/v_menu');
+        $this->load->view('connecte/praticien/v_titre');
         $this->load->view('connecte/praticien/v_menu-praticien');
 
             // Méthode afficher les spécialitées
         $data['spe']= $this->modele_deniz->getTypePraticien();
 
             //Formulaire
-        $this->load->view('connecte/praticien/v_ajout_praticien', $data);
+        $this->load->view('connecte/praticien/v_ajout_praticien_v2', $data);
         
             //Bas
         $this->load->view('connecte/v_bas');

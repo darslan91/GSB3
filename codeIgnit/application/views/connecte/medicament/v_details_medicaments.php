@@ -46,5 +46,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <form method="post">
     <p align="center">
         <input type="button" value="Fermer la fenêtre" onClick="window.close()">
+        <input type="button" value="Format PDF"/>
     </p>
 </form>	

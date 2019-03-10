@@ -96,6 +96,8 @@ class c_medicament extends CI_Controller{
             // Appel de la vue qui affiche les détails
             $this->load->view('connecte/medicament/v_result_research_name', $data);
             //echo $nomSearch;
+        }else{
+            $this->index();
         }
         
 

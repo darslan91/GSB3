@@ -18,9 +18,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php echo form_open('c_praticien/nouveau_validation');?>
         
         <tr>
-            <td><?php echo form_input('nom');?></td>
-            <td><?php echo form_input('prenom');?></td>
-s
+            <td><?php echo form_input('nom', '', 'required="required"');?></td>
+            <td><?php echo form_input('prenom', '', 'required="required"');?></td>
         </tr>
     </table>
     <!-- Fin des civilités (1er tableau)-->
@@ -36,9 +35,9 @@ s
         </tr>
 
         <tr>
-            <td><?php echo form_input('adresse');?></td>
-            <td><?php echo form_input('cp');?></td>
-            <td><?php echo form_input('ville');?></td>
+            <td><?php echo form_input('adresse', '', 'required="required"');?></td>
+            <td><?php echo form_input('cp', '', 'required="required"');?></td>
+            <td><?php echo form_input('ville', '', 'required="required"');?></td>
         </tr>
     </table>
     <!-- Fin Adresse (2ème tableau) -->
@@ -50,13 +49,12 @@ s
         <tr class="table">
             <th>Coefficient de notorieté</th>
             <th>Spécialité</th>
-            <th>Remplacent</th>
         </tr>
 
         <tr>
 
             <!-- Champ pour sasir la notorieté -->
-            <td><?php echo form_input('notoriete');?></td>
+            <td><?php echo form_input('notoriete', '', 'required="required"');?></td>
 
             <!-- Afficher les spécialitées possibles -->
             <td>
@@ -69,13 +67,6 @@ s
                 </select>
             </td>
 
-            <!-- Remplacent ou pas -->
-            <td>
-                <select name ="remplCode">
-                    <option value="0">NON</option>
-                    <option value="1">OUI</option>
-                </select>
-            </td>
         </tr>
     </table>
     <!-- Fin Autres informations (3ème tableau) -->
