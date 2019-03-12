@@ -59,6 +59,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     echo "<td>".$depot_legal[$i]."</td>";
                     $num_dep = $depot_legal[$i];
                     echo "<td>".$nom_commercial[$i]."</td>";
+                    //echo "<td><a href=\"detail/$depot_legal[$i]\" target=\"wclose\" onclick=\"window.open('detail/$depot_legal[$i]','wclose', 'width=500,height=825,toolbar=no,status=no,left=60,top=110')\">Plus</a></td>";
                 echo "</tr>";
 
                 $i = $i+1;
