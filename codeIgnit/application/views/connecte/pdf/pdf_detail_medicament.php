@@ -7,13 +7,13 @@ class PDF extends FPDF{
     //En tête
     function Header(){
         //Logo
-        $this->Image('logo.jpg',10,6,30);
+        //$this->Image('logo.jpg', 10, 6, 30);
         //Police
         $this->SetFont('Arial','B',15);
         //Décalage à droite			
         $this->Cell(80);
 		// Titre
-		$this->Cell(30,10,'Fiche Détail du Médicament',0,0,'C');
+		$this->Cell(30,10,'Fiche Detail du Medicament',0,0,'C');
 		// Saut de ligne
 		$this->Ln(20);
 
@@ -38,19 +38,32 @@ $pdf->SetFont('Arial','',12);
 
 
 //Titre
-$pdf->Cell(10,10,'Détail du médicament',0,0);
-$pdf->Ln(10);
+$pdf->Cell(10,10,'Detail du medicament',0,0);
+$pdf->Ln(15);
 
 
 /* TABLEAUX DU MEDICAMENT */
-$pdf->Cell(10,10,'Dépôt Légal',0,0);
-$pdf->Cell(10,10,'Nom Commercial',0,0);
-$pdf->Cell(10,10,'Code Famille Medicament',0,0);
-$pdf->Cell(10,10,'Libelle Famille',0,0);
-$pdf->Cell(10,10,'Composition du Médicament',0,0);
-$pdf->Cell(10,10,'Effet du Médicament',0,0);
-$pdf->Cell(10,10,'Contre-indications du Médicaments',0,0);
+$pdf->Cell(10,10,'Le medicament',0,0);
+$pdf->Ln(10);
 
+$pdf->Cell(35,10,'Depot Legal',1,0);
+$pdf->Cell(35,10,'Nom Commercial',1,0);
+$pdf->Ln(15);
 
-$pdf->Output('I', 'detail_medicament', $isUTF8 = true);
+$pdf->Cell(10,10,'Sa famille',0,0);
+$pdf->Ln(10);
+
+$pdf->Cell(35,10,'Code Famille',1,0);
+$pdf->Cell(35,10,'Libelle Famille',1,0);
+$pdf->Ln(15);
+
+$pdf->Cell(10,10,'Detail composition',0,0);
+$pdf->Ln(10);
+
+$pdf->Cell(35,10,'Composition',1,0);
+$pdf->Cell(35,10,'Effet',1,0);
+$pdf->Cell(37,10,'Contre-indications',1,0);
+
+//Ouverture du pdf normalement
+$pdf->Output();
 ?>

@@ -58,6 +58,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <form method="post">
     <p align="center">
         <input type="button" value="Fermer la fenêtre" onClick="window.close()">
-        <input type="button" value="Format PDF" href="connecte/pdf/pdf_detail_medicament.php"/>
+        <!--<input type="button" value="Format PDF" href="connecte/pdf/pdf_detail_medicament.php"/>-->
     </p>
 </form>	

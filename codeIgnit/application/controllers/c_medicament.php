@@ -58,7 +58,24 @@ class c_medicament extends CI_Controller{
         $this->load->view('connecte/medicament/v_details_medicaments', $data);
     }
 
-    
+
+    /**
+     * Fonction afficherPDF($id)
+     * --------------------------------
+     * $id = l'id du médicament
+     * 
+     * Cette foncrion permet d'afficher le PDF
+     */
+    public function afficherPDF($id){
+
+        /* RECUPERATION */
+        $data['medicament'] = $id;
+        
+        /* VIEW */
+        $this->load->view('connecte/pdf/pdf_detail_medicament', $data);
+    }
+
+
     /**
      * Fonction rechercheNom()
      * ---------------------------------
