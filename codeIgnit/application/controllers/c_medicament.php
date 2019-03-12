@@ -67,12 +67,17 @@ class c_medicament extends CI_Controller{
      * Cette foncrion permet d'afficher le PDF
      */
     public function afficherPDF($id){
+        /* MODELE */
+        $this->load->model('modele_deniz');
 
         /* RECUPERATION */
         $data['medicament'] = $id;
+
+        /* EXECUTION D'UNE REQUETE POUR RECUP LES DETAILS MED */
+        $data_det['medicament'] = $this->modele_deniz->getDetailsMedicament($id);
         
         /* VIEW */
-        $this->load->view('connecte/pdf/pdf_detail_medicament', $data);
+        $this->load->view('connecte/pdf/pdf_detail_medicament', $data, $data_det);
     }
 
 

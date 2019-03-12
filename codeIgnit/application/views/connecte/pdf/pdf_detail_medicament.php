@@ -45,21 +45,24 @@ $pdf->Ln(15);
 /* TABLEAUX DU MEDICAMENT */
 $pdf->Cell(10,10,'Le medicament',0,0);
 $pdf->Ln(10);
-
+//Le med
 $pdf->Cell(35,10,'Depot Legal',1,0);
 $pdf->Cell(35,10,'Nom Commercial',1,0);
+$pdf->Ln();
+$pdf->Cell(35,10,$medicament[0],1,0);
+$pdf->Cell(35,10,$medicament[0],1,0);
 $pdf->Ln(15);
 
 $pdf->Cell(10,10,'Sa famille',0,0);
 $pdf->Ln(10);
-
+//Sa famille
 $pdf->Cell(35,10,'Code Famille',1,0);
 $pdf->Cell(35,10,'Libelle Famille',1,0);
 $pdf->Ln(15);
 
 $pdf->Cell(10,10,'Detail composition',0,0);
 $pdf->Ln(10);
-
+//Detail composition
 $pdf->Cell(35,10,'Composition',1,0);
 $pdf->Cell(35,10,'Effet',1,0);
 $pdf->Cell(37,10,'Contre-indications',1,0);
