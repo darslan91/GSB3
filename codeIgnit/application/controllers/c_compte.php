@@ -34,7 +34,6 @@ class c_compte extends CI_Controller{
         foreach ($idVisArray as $key){
             $idVis = $key->vis_matricule;
         }
-        var_dump($this->session);
 
             //Haut + menu
         $this->load->view('connecte/v_haut');
