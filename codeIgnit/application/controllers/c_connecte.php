@@ -4,6 +4,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class c_connecte extends CI_Controller{
     
     public function index(){
+
+        $this->load->helper('url');
+        $this->load->library('session');
+        if(!isset($this->session->connecte)){
+            if($this->session->connecte != true){
+                redirect('c_accueil/deconnexion');
+            }
+        }
+        
+
         /* CHARGEMENT */
             //Haut + menu
         $this->load->view('connecte/v_haut');
@@ -17,6 +27,16 @@ class c_connecte extends CI_Controller{
     
         //Affichage d'un tableau
     public function tableau(){
+
+        /*Bien connecté*/
+        $this->load->helper('url');
+        $this->load->library('session');
+        if(!isset($this->session->connecte)){
+            if($this->session->connecte != true){
+                redirect('c_accueil/deconnexion');
+            }
+        }
+
         /* CHARGEMENT */
             //Haut + menu
         $this->load->view('connecte/v_haut');

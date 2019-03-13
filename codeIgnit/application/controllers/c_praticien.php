@@ -18,6 +18,15 @@ class c_praticien extends CI_Controller{
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('modele_thibault');
+
+        /*Bien connecté*/
+        $this->load->helper('url');
+        $this->load->library('session');
+        if(!isset($this->session->connecte)){
+            if($this->session->connecte != true){
+                redirect('c_accueil/deconnexion');
+            }
+        }
         
             //R�cup�ration id
         $this->load->library('session');
@@ -110,6 +119,15 @@ class c_praticien extends CI_Controller{
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('modele_thibault');
+
+        /*Bien connecté*/
+        $this->load->helper('url');
+        $this->load->library('session');
+        if(!isset($this->session->connecte)){
+            if($this->session->connecte != true){
+                redirect('c_accueil/deconnexion');
+            }
+        }
         
             //R�cup�ration id
         $this->load->library('session');
@@ -142,6 +160,15 @@ class c_praticien extends CI_Controller{
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('modele_deniz');
+
+        /*Bien connecté*/
+        $this->load->helper('url');
+        $this->load->library('session');
+        if(!isset($this->session->connecte)){
+            if($this->session->connecte != true){
+                redirect('c_accueil/deconnexion');
+            }
+        }
 
             //Haut + menu
         $this->load->view('connecte/v_haut');
@@ -178,6 +205,15 @@ class c_praticien extends CI_Controller{
         $this->load->library('form_validation');
         $this->load->database();
         $this->load->model('modele_deniz');
+
+        /*Bien connecté*/
+        $this->load->helper('url');
+        $this->load->library('session');
+        if(!isset($this->session->connecte)){
+            if($this->session->connecte != true){
+                redirect('c_accueil/deconnexion');
+            }
+        }
         
         /*    //R�cup�ration id
         $this->load->library('session');
@@ -242,6 +278,15 @@ class c_praticien extends CI_Controller{
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('modele_thibault');
+
+        /*Bien connecté*/
+        $this->load->helper('url');
+        $this->load->library('session');
+        if(!isset($this->session->connecte)){
+            if($this->session->connecte != true){
+                redirect('c_accueil/deconnexion');
+            }
+        }
         
             //id r�cup�ration
         $this->load->library('session');
@@ -280,6 +325,15 @@ class c_praticien extends CI_Controller{
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('modele_thibault');
+
+        /*Bien connecté*/
+        $this->load->helper('url');
+        $this->load->library('session');
+        if(!isset($this->session->connecte)){
+            if($this->session->connecte != true){
+                redirect('c_accueil/deconnexion');
+            }
+        }
         
         //id r�cup�ration
         $this->load->library('session');

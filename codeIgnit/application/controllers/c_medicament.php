@@ -12,6 +12,16 @@ class c_medicament extends CI_Controller{
      * Cette fonction permet de cherger les helpers, le modèle, les vues
      */
     public function index(){
+
+        /*Bien connecté*/
+        $this->load->helper('url');
+        $this->load->library('session');
+        if(!isset($this->session->connecte)){
+            if($this->session->connecte != true){
+                redirect('c_accueil/deconnexion');
+            }
+        }
+
         //Helper
         $this->load->helper('html');
         $this->load->model('modele_deniz');
@@ -45,6 +55,16 @@ class c_medicament extends CI_Controller{
      * Cette fonction permet d'afficher dans une fenêtre le détail d'un medicament
      */
     public function detail($id){
+
+        /*Bien connecté*/
+        $this->load->helper('url');
+        $this->load->library('session');
+        if(!isset($this->session->connecte)){
+            if($this->session->connecte != true){
+                redirect('c_accueil/deconnexion');
+            }
+        }
+
         /* HELPERS */
         $this->load->helper('html');
         $this->load->helper('form');
@@ -67,6 +87,16 @@ class c_medicament extends CI_Controller{
      * Cette foncrion permet d'afficher le PDF
      */
     public function afficherPDF($id){
+
+        /*Bien connecté*/
+        $this->load->helper('url');
+        $this->load->library('session');
+        if(!isset($this->session->connecte)){
+            if($this->session->connecte != true){
+                redirect('c_accueil/deconnexion');
+            }
+        }
+
         $this->load->helper('html');
         $this->load->helper('form');
         /* MODELE */
@@ -92,6 +122,16 @@ class c_medicament extends CI_Controller{
      * Cette fonction permet d'afficher le résultat de la recherche d'une autre fenêtre
      */
     public function rechercheNom(){
+
+        /*Bien connecté*/
+        $this->load->helper('url');
+        $this->load->library('session');
+        if(!isset($this->session->connecte)){
+            if($this->session->connecte != true){
+                redirect('c_accueil/deconnexion');
+            }
+        }
+        
         /* DATABASE */
         $this->load->database();
 
