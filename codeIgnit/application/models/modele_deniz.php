@@ -37,17 +37,24 @@ class modele_deniz extends CI_Model{
         return $result;
     }
 
-
+    /**
+     * getDetailsMedicamentPDF($id)
+     * -----------------------------------
+     * $id = l'id du médicament selectionner dans le tableau
+     * 
+     * Cette fonction permet d'afficher dans le pdf les information sur un médicament et de le télécharger(PDF)
+     */
     public function getDetailsMedicamentPDF($id){
         //La rêquete
         $req="SELECT med_depotlegal,med_nomcommercial,M.fam_code AS fam_code,fam_libelle,med_composition,med_effets,med_contreindic,med_prixechantillon AS prix FROM medicament M, famille F WHERE F.fam_code = M.fam_code AND med_depotlegal = '$id'";
         //Faire passer et executer la requête
         $result = $this->db->query($req)->result();
 
+        //Création d'un tableau pour récuperer les éléments
         $tab = array();
 
+        //Parcours du result pour affecter les valeurs au tableau
         foreach ($result as $row) {
-
           $tab['med_depotlegal'] = $row->med_depotlegal;
           $tab['med_nomcommercial'] = $row->med_nomcommercial;
           $tab['fam_code'] = $row->fam_code;
@@ -58,21 +65,9 @@ class modele_deniz extends CI_Model{
         }
 
 
-
+        //Retourner le tableau
         return $tab;
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     /**
@@ -138,7 +133,33 @@ class modele_deniz extends CI_Model{
     }
 
 
+    /**
+     * getInfosVisiteur($id)
+     * ------------------------------------
+     * $id = l'id du visiteur connecte
+     * 
+     * Cette fonction execute une requete qui me retourne un tableau contenant les infos visiteur
+     */
+    public function getInfosVisiteur($id){
+        $req="SELECT vis_nom,vis_prenom,vis_adresse,vis_cp,vis_ville,vis_dateembauche FROM visiteur WHERE vis_matricule = $id";
+        $result = $this->db->query($req)->result();
 
+        /* PARCOURS DU RESULTAT */
+        //Déclaration tableau
+        $tab = array();
+
+        //Parcours du result
+        foreach ($result as $row) {
+            $tab['vis_nom'] = $row->vis_nom;
+            $tab['vis_nom'] = $row->prenom;
+            $tab['vis_adresse'] = $row->vis_adresse;
+            $tab['vis_cp'] = $row->vis_cp;
+            $tab['vis_ville'] = $row->vis_ville;
+            $tab['vis_dateembauche'] = $row->vis_dateembauche;
+        }
+
+        return $tab;
+        }
 }
 
 ?>

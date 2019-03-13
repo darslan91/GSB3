@@ -14,7 +14,7 @@ $this->load->helper('url');
 			<li><?php echo anchor('c_compte/index','Compte-Rendu'); ?></li>
 			<li><?php echo anchor('c_praticien/index/1/10','Praticien'); ?></li>
 			<li><?php echo anchor('c_medicament/index','Médicaments'); ?></li>
-			<li><?php echo anchor('','Lien3'); ?></li>
+			<li><?php echo anchor('c_information/afficherInfos','Informations Utilisateur'); ?></li>
 			<li><?php echo anchor('c_accueil/deconnexion','Deconnexion'); ?></li>
     </ul>
   </div>

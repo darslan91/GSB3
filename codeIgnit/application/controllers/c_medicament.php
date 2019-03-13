@@ -14,13 +14,20 @@ class c_medicament extends CI_Controller{
     public function index(){
 
         /*Bien connecté*/
-        $this->load->helper('url');
+        /*$this->load->helper('url');
         $this->load->library('session');
         if(!isset($this->session->connecte)){
             if($this->session->connecte != true){
                 redirect('c_accueil/deconnexion');
             }
+        }*/
+        /* RECUPERATION DE L'ID */
+        $this->load->library('session');
+        $idVisArray = $this->session->idVis;
+        foreach($idVisArray as $key){
+            $idVis = $key->vis_matricule;
         }
+        var_dump($this->session);
 
         //Helper
         $this->load->helper('html');
@@ -57,13 +64,13 @@ class c_medicament extends CI_Controller{
     public function detail($id){
 
         /*Bien connecté*/
-        $this->load->helper('url');
+        /*$this->load->helper('url');
         $this->load->library('session');
         if(!isset($this->session->connecte)){
             if($this->session->connecte != true){
                 redirect('c_accueil/deconnexion');
             }
-        }
+        }*/
 
         /* HELPERS */
         $this->load->helper('html');
@@ -89,13 +96,13 @@ class c_medicament extends CI_Controller{
     public function afficherPDF($id){
 
         /*Bien connecté*/
-        $this->load->helper('url');
+        /*$this->load->helper('url');
         $this->load->library('session');
         if(!isset($this->session->connecte)){
             if($this->session->connecte != true){
                 redirect('c_accueil/deconnexion');
             }
-        }
+        }*/
 
         $this->load->helper('html');
         $this->load->helper('form');
@@ -124,13 +131,13 @@ class c_medicament extends CI_Controller{
     public function rechercheNom(){
 
         /*Bien connecté*/
-        $this->load->helper('url');
+        /*$this->load->helper('url');
         $this->load->library('session');
         if(!isset($this->session->connecte)){
             if($this->session->connecte != true){
                 redirect('c_accueil/deconnexion');
             }
-        }
+        }*/
         
         /* DATABASE */
         $this->load->database();
