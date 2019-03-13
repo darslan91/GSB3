@@ -37,26 +37,57 @@ class c_accueil extends CI_Controller{
 		          $this->deconnexion();
 		        }
 		    }
+
 			$login = $this->input->post('login');
 			$mdp = $this->input->post('mdp');
-			$data['query'] = $this->modele_connexion->userExist($login, $mdp);
-			$nb = count($data['query']);
-			if($nb != 0){
-			     $this->load->library('session');
-			     $_SESSION['connecte']=true;
-			     $_SESSION['idVis'] = $this->modele_connexion->getUserId($login, $mdp);
-			     $this->connecter();
-		    }
-		    else{
-		        $this->deconnexion();
-		    }
+
+			$data['exist'] = $this->modele_connexion->userExist($login);
+			$nb2 = count($data['exist']);
+
+			if($nb2 != 0){
+				$change = $this->modele_connexion->userChange($login);
+				foreach ($change as $key) {
+					$change = $key->mdpChange;
+				}
+				if($change == 0){
+					if(strlen($mdp) != 10){
+						$this->deconnexion();
+					}
+					else{
+						$data['prem'] = $this->modele_connexion->userConPremiereFois($login, $mdp);
+						$nb = count($data['prem']);
+						if($nb != 0){
+						     $this->load->library('session');
+						     $_SESSION['connecte']=true;
+						     $_SESSION['idVis'] = $this->modele_connexion->getUserId($login, $mdp);
+						     $this->connecterPremiere();
+					    }
+					    else{
+					        $this->deconnexion();
+					    }
+					}
+				}
+				else{
+					$data['con'] = $this->modele_connexion->userConNormal($login, $mdp);
+					$nb = count($data['con']);
+					if($nb != 0){
+					     $this->load->library('session');
+					     $_SESSION['connecte']=true;
+					     $_SESSION['idVis'] = $this->modele_connexion->getUserId($login);
+					     $this->connecter();
+				    }
+				    else{
+				        $this->deconnexion();
+				    }
+				}
+			}
 		}
 		else{
 			$this->deconnexion();
 		}
 	}
     
-	   //Fonction de déconnexion
+	   //Fonction de dÃ©connexion
 	function deconnexion(){
 		if(isset($this->session)){
 			foreach ($_SESSION as $key => $value) {
@@ -67,11 +98,48 @@ class c_accueil extends CI_Controller{
 		$this->index();
 	}
     
-	   //Fonction connecté
+	   //Fonction connectÃ©
 	function connecter(){
 	    $this->load->view('connecte/v_haut');
 	    $this->load->view('connecte/v_menu');
 	    $this->load->view('connecte/v_bas');
+	}
+
+	function connecterPremiere(){
+		$this->load->view('connecte/v_haut');
+	    $this->load->view('connecte/v_changementMdp');
+	    $this->load->view('connecte/v_bas');
+	}
+
+	function changeMdp(){
+
+		$this->load->library('session');
+        $idVisArray = $this->session->idVis;
+        foreach ($idVisArray as $key){
+            $idVis = $key->vis_matricule;
+        }
+
+		/* CHARGMENT */
+		$this->load->model('modele_connexion');
+		$this->load->library('form_validation');
+
+		/* REGLES  FORMULAIRE */
+		$this->form_validation->set_rules('mdp1','Mot de passe', 'required');
+		$this->form_validation->set_rules('mdp2','Mot de passe', 'required');
+
+		$mdp1 = $this->input->post('mdp1');
+		$mdp2 = $this->input->post('mdp2');
+
+		if($mdp1 != $mdp2){
+			$data['mdp'] = "Mots de passe different";
+			$this->load->view('connecte/v_haut');
+	    	$this->load->view('connecte/v_changementMdp', $data);
+	    	$this->load->view('connecte/v_bas');
+		}
+		else{
+			$this->modele_connexion->changeMdp($mdp1, $idVis);
+			$this->connecter();
+		}
 	}
 
 }
