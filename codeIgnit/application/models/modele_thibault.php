@@ -20,7 +20,8 @@ class modele_thibault extends CI_Model{
 
       //Récupération de toutes les visites
     public function getLesVisites($idVis){
-        $req = "SELECT DISTINCT pra_nom, pra_prenom, rap_num, rap_date, rap_motif, num_rplc FROM rapport_visite, praticien ".
+        $req = "SELECT DISTINCT pra_nom, pra_prenom, rap_num, rap_date, rap_motif, num_rplc ".
+               "FROM rapport_visite, praticien ".
                "WHERE rapport_visite.pra_num = praticien.pra_num ".
                "AND vis_matricule = '$idVis' ".
                "ORDER BY rap_num DESC";

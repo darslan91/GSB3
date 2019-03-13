@@ -377,31 +377,56 @@ class c_compte extends CI_Controller{
 /* --------------------------------------------------- */  
     function modifier($id){
         /* CHARGEMENT */
-        //Helper
+            //Helper
         $this->load->helper('html');
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('modele_thibault');
         
-        //id r�cup�ration
+            //id r�cup�ration
         $this->load->library('session');
         $idVisArray = $this->session->idVis;
         foreach ($idVisArray as $key){
             $idVis = $key->vis_matricule;
         }
         
-        //Haut + menu
+            //Haut + menu
         $this->load->view('connecte/v_haut');
         $this->load->view('connecte/v_menu');
         $this->load->view('connecte/compte-rendu/v_titre');
         $this->load->view('connecte/compte-rendu/v_menu_compte-rendu');
         
-        //Corps
+            //Corps
         $data['detail'] = $this->modele_thibault->getLaVisite($id, $idVis);
         $this->load->view('connecte/compte-rendu/v_tableau-detail-modif', $data);
-        //Bas
+            //Bas
         $this->load->view('connecte/v_bas');
     }
 /* --------------------------------------------------- */
+
+
+/* --------------------------------------------------- */
+//Fonction PDF
+/* --------------------------------------------------- */
+    /*
+    *PDF
+    */
+/* --------------------------------------------------- */ 
+
+    function pdf($id){
+
+        /* CHARGEMENT */
+        //Helper
+        $this->load->helper('html');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $this->load->model('modele_thibault');
+
+        $this->load->model('htmltopdf_model');
+        $this->load->library('/libraries/Cpdf');
+
+
+    }
+
 // AM246B1N
 }
