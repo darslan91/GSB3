@@ -32,7 +32,7 @@ class c_medicament extends CI_Controller{
         $this->load->view('connecte/medicament/v_recherche_medicament');
         //Footer
         $this->load->view('connecte/v_bas');
-    
+
 
     }
 
@@ -41,7 +41,7 @@ class c_medicament extends CI_Controller{
      * Fonction detail($id)
      * ---------------------
      * @id = l'id du médicament
-     * 
+     *
      * Cette fonction permet d'afficher dans une fenêtre le détail d'un medicament
      */
     public function detail($id){
@@ -63,10 +63,12 @@ class c_medicament extends CI_Controller{
      * Fonction afficherPDF($id)
      * --------------------------------
      * $id = l'id du médicament
-     * 
+     *
      * Cette foncrion permet d'afficher le PDF
      */
     public function afficherPDF($id){
+        $this->load->helper('html');
+        $this->load->helper('form');
         /* MODELE */
         $this->load->model('modele_deniz');
 
@@ -74,10 +76,13 @@ class c_medicament extends CI_Controller{
         $data['medicament'] = $id;
 
         /* EXECUTION D'UNE REQUETE POUR RECUP LES DETAILS MED */
-        $data_det['medicament'] = $this->modele_deniz->getDetailsMedicament($id);
-        
+        $data_det['medicament'] = $this->modele_deniz->getDetailsMedicamentPDF($id);
+        //var_dump($data_det);
+        echo $data_det['medicament']['med_depotlegal'];
+        echo $data_det['medicament']['med_nomcommercial'];
+
         /* VIEW */
-        $this->load->view('connecte/pdf/pdf_detail_medicament', $data, $data_det);
+        $this->load->view('connecte/pdf/pdf_detail_medicament', $data_det);
     }
 
 
@@ -118,16 +123,16 @@ class c_medicament extends CI_Controller{
 	                $data[0]["med_depotlegal"] = "Aucun Numéro";
                 }
 
-            // Appel de la méthode dans le modèle 
+            // Appel de la méthode dans le modèle
             $data_result['medicament'] = $this->modele_deniz->getSearchMedNom($nomSearch);
             //var_dump($data_result['medicament']);
 
 
-            // Appel des vue pour afficher 
+            // Appel des vue pour afficher
             $this->load->view('connecte/v_haut');
             $this->load->view('connecte/v_menu');
             $this->load->view('connecte/medicament/v_tableau_medocs', $data);
-            $this->load->view('connecte/medicament/v_recherche_medicament'); 
+            $this->load->view('connecte/medicament/v_recherche_medicament');
 
             if(empty($data_result['medicament']['med_depotlegal']) && empty($data_result['medicament']['med_nomcommercial'])){
                 //echo "if";

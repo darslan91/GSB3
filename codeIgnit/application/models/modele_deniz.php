@@ -1,4 +1,4 @@
-<?php 
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class modele_deniz extends CI_Model{
@@ -6,8 +6,8 @@ class modele_deniz extends CI_Model{
     public function __construct(){
         $this->load->database();
     }
-    
-    
+
+
     /**
      * getLesMedicaments()
      * -------------------------------
@@ -33,9 +33,46 @@ class modele_deniz extends CI_Model{
         $req="SELECT med_depotlegal,med_nomcommercial,M.fam_code,med_composition,med_effets,med_contreindic,med_prixechantillon AS prix, fam_libelle FROM medicament M, famille F WHERE F.fam_code = M.fam_code AND med_depotlegal = '$id'";
         //Faire passer et executer la requête
         $result = $this->db->query($req)->result();
-        
+
         return $result;
     }
+
+
+    public function getDetailsMedicamentPDF($id){
+        //La rêquete
+        $req="SELECT med_depotlegal,med_nomcommercial,M.fam_code AS fam_code,fam_libelle,med_composition,med_effets,med_contreindic,med_prixechantillon AS prix FROM medicament M, famille F WHERE F.fam_code = M.fam_code AND med_depotlegal = '$id'";
+        //Faire passer et executer la requête
+        $result = $this->db->query($req)->result();
+
+        $tab = array();
+
+        foreach ($result as $row) {
+
+          $tab['med_depotlegal'] = $row->med_depotlegal;
+          $tab['med_nomcommercial'] = $row->med_nomcommercial;
+          $tab['fam_code'] = $row->fam_code;
+          $tab['fam_libelle'] = $row->fam_libelle;
+          $tab['med_composition'] = $row->med_composition;
+          $tab['med_effets'] = $row->med_effets;
+          $tab['med_contreindic'] = $row->med_contreindic;
+        }
+
+
+
+        return $tab;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     /**
@@ -54,7 +91,7 @@ class modele_deniz extends CI_Model{
             foreach ($query->result() as $row) {
                 $med_depotlegal[] = $row->med_depotlegal;
                 $med_nomcommercial[] = $row->med_nomcommercial;
-                
+
             }
 
             $liste = array('med_depotlegal' => $med_depotlegal, 'med_nomcommercial' => $med_nomcommercial);
@@ -75,7 +112,7 @@ class modele_deniz extends CI_Model{
 
         return $result;
     }
-    
+
 
     /**
      * addNewPrat()
@@ -93,7 +130,7 @@ class modele_deniz extends CI_Model{
             'pra_cp' => $cp,
             'pra_ville' => $ville,
             'pra_coefnotoriete' => $coef,
-            'typ_code' => $spe, 
+            'typ_code' => $spe,
             'rplc' => $rplc
         );
 

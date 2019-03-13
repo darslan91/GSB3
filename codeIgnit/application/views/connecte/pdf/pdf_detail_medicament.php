@@ -10,7 +10,7 @@ class PDF extends FPDF{
         //$this->Image('logo.jpg', 10, 6, 30);
         //Police
         $this->SetFont('Arial','B',15);
-        //Décalage à droite			
+        //Décalage à droite
         $this->Cell(80);
 		// Titre
 		$this->Cell(30,10,'Fiche Detail du Medicament',0,0,'C');
@@ -38,34 +38,56 @@ $pdf->SetFont('Arial','',12);
 
 
 //Titre
+$pdf->SetFont('Arial','B',13);
 $pdf->Cell(10,10,'Detail du medicament',0,0);
 $pdf->Ln(15);
 
 
 /* TABLEAUX DU MEDICAMENT */
+$pdf->SetFont('Arial','B',12);
 $pdf->Cell(10,10,'Le medicament',0,0);
+$pdf->SetFont('Arial','',12);
 $pdf->Ln(10);
 //Le med
-$pdf->Cell(35,10,'Depot Legal',1,0);
-$pdf->Cell(35,10,'Nom Commercial',1,0);
+$pdf->Cell(35,10,'Depot Legal',1,0,'C');
+$pdf->Cell(35,10,'Nom Commercial',1,0,'C');
 $pdf->Ln();
-$pdf->Cell(35,10,$medicament[0],1,0);
-$pdf->Cell(35,10,$medicament[0],1,0);
+$pdf->Cell(35,10,$medicament['med_depotlegal'],1,0,'C');
+$pdf->Cell(35,10,$medicament['med_nomcommercial'],1,0, 'C');
 $pdf->Ln(15);
 
+$pdf->SetFont('Arial','B',12);
 $pdf->Cell(10,10,'Sa famille',0,0);
+$pdf->SetFont('Arial','',12);
 $pdf->Ln(10);
+
 //Sa famille
-$pdf->Cell(35,10,'Code Famille',1,0);
-$pdf->Cell(35,10,'Libelle Famille',1,0);
+$pdf->Cell(35,10,'Code Famille',1,0,'C');
+$pdf->Cell(60,10,'Libelle Famille',1,0,'C');
+$pdf->Ln();
+$pdf->Cell(35,10,$medicament['fam_code'],1,0,'C');
+$pdf->Cell(60,10,$medicament['fam_libelle'],1,0,'C');
 $pdf->Ln(15);
 
+$pdf->SetFont('Arial','B',12);
 $pdf->Cell(10,10,'Detail composition',0,0);
+$pdf->SetFont('Arial','',12);
 $pdf->Ln(10);
 //Detail composition
-$pdf->Cell(35,10,'Composition',1,0);
-$pdf->Cell(35,10,'Effet',1,0);
-$pdf->Cell(37,10,'Contre-indications',1,0);
+$pdf->Cell(35,10,'Composition : ',0,0);
+$pdf->Cell(80,10,$medicament['med_composition'],0,0,'C');
+$pdf->Ln();
+
+$pdf->Cell(35,10,'Effet : ',0,0);
+$pdf->Cell(150,10,$medicament['med_effets'],0,0,'C');
+$pdf->Ln();
+$pdf->Cell(50,10,"",0,0);
+
+$pdf->Ln();
+$pdf->Cell(37,10,'Contre-indications :',0,0);
+$pdf->Ln();
+$pdf->Cell(60,10,"",0,0);
+$pdf->Cell(80,10,$medicament['med_contreindic'],0,0,'C');
 
 //Ouverture du pdf normalement
 $pdf->Output();
