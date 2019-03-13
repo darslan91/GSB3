@@ -52,8 +52,8 @@ $pdf->Ln(10);
 $pdf->Cell(35,10,'Depot Legal',1,0,'C');
 $pdf->Cell(35,10,'Nom Commercial',1,0,'C');
 $pdf->Ln();
-$pdf->Cell(35,10,$medicament['med_depotlegal'],1,0,'C');
-$pdf->Cell(35,10,$medicament['med_nomcommercial'],1,0, 'C');
+$pdf->Cell(35,10,utf8_decode($medicament['med_depotlegal']),1,0,'C');
+$pdf->Cell(35,10,utf8_decode($medicament['med_nomcommercial']),1,0, 'C');
 $pdf->Ln(15);
 
 $pdf->SetFont('Arial','B',12);
@@ -65,8 +65,8 @@ $pdf->Ln(10);
 $pdf->Cell(35,10,'Code Famille',1,0,'C');
 $pdf->Cell(60,10,'Libelle Famille',1,0,'C');
 $pdf->Ln();
-$pdf->Cell(35,10,$medicament['fam_code'],1,0,'C');
-$pdf->Cell(60,10,$medicament['fam_libelle'],1,0,'C');
+$pdf->Cell(35,10,utf8_decode($medicament['fam_code']),1,0,'C');
+$pdf->Cell(60,10,utf8_decode($medicament['fam_libelle']),1,0,'C');
 $pdf->Ln(15);
 
 $pdf->SetFont('Arial','B',12);
@@ -75,11 +75,11 @@ $pdf->SetFont('Arial','',12);
 $pdf->Ln(10);
 //Detail composition
 $pdf->Cell(35,10,'Composition : ',0,0);
-$pdf->Cell(80,10,$medicament['med_composition'],0,0,'C');
+$pdf->Cell(80,10,utf8_decode($medicament['med_composition']),0,0,'C');
 $pdf->Ln();
 
 $pdf->Cell(35,10,'Effet : ',0,0);
-$pdf->Cell(150,10,$medicament['med_effets'],0,0,'C');
+$pdf->Cell(150,10,utf8_decode($medicament['med_effets']),0,0,'C');
 $pdf->Ln();
 $pdf->Cell(50,10,"",0,0);
 
@@ -87,7 +87,7 @@ $pdf->Ln();
 $pdf->Cell(37,10,'Contre-indications :',0,0);
 $pdf->Ln();
 $pdf->Cell(60,10,"",0,0);
-$pdf->Cell(80,10,$medicament['med_contreindic'],0,0,'C');
+$pdf->Cell(80,10,utf8_decode($medicament['med_contreindic']),0,0,'C');
 
 //Ouverture du pdf normalement
 $pdf->Output();
