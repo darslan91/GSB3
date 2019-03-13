@@ -41,8 +41,6 @@ class c_information extends CI_Controller{
         foreach($idVisArray as $key){
             $idVis = $key->vis_matricule;
         }
-        var_dump($this->session);
-
 
         /* CHARGEMENT DES ELEMENTS BESOINS */
             //Helpers
@@ -67,7 +65,7 @@ class c_information extends CI_Controller{
             //Menu
             $this->load->view('connecte/v_menu');
             //Affichage Info
-            $this->load->view('connecte/v_affichage_infos', $data);
+            $this->load->view('connecte/information/v_affichage_infos', $data);
             //Bas
             $this->load->view('connecte/v_bas');
 

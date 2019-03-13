@@ -141,7 +141,7 @@ class modele_deniz extends CI_Model{
      * Cette fonction execute une requete qui me retourne un tableau contenant les infos visiteur
      */
     public function getInfosVisiteur($id){
-        $req="SELECT vis_nom,vis_prenom,vis_adresse,vis_cp,vis_ville,vis_dateembauche FROM visiteur WHERE vis_matricule = $id";
+        $req="SELECT vis_nom,vis_prenom,vis_adresse,vis_cp,vis_ville,vis_dateembauche FROM visiteur WHERE vis_matricule = '$id' ";
         $result = $this->db->query($req)->result();
 
         /* PARCOURS DU RESULTAT */
@@ -151,11 +151,11 @@ class modele_deniz extends CI_Model{
         //Parcours du result
         foreach ($result as $row) {
             $tab['vis_nom'] = $row->vis_nom;
-            $tab['vis_nom'] = $row->prenom;
+            $tab['vis_prenom'] = $row->vis_prenom;
             $tab['vis_adresse'] = $row->vis_adresse;
             $tab['vis_cp'] = $row->vis_cp;
             $tab['vis_ville'] = $row->vis_ville;
-            $tab['vis_dateembauche'] = $row->vis_dateembauche;
+            $tab['vis_dateembauche'] = substr($row->vis_dateembauche, 0, 10);
         }
 
         return $tab;
