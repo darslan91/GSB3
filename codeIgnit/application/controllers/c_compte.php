@@ -283,24 +283,7 @@ class c_compte extends CI_Controller{
             $idPra = $this->input->post('nomPrenomPra');
             $idPraRplc = null;
         }
-        /* --------------------------------------------------- */
-
-        /* --------------------------------------------------- */
-        //cadeau effectuer par le visiteur
-        /* --------------------------------------------------- */
-        $check1 = $this->input->post('check1');
-        $check2 = $this->input->post('check2');
-        $check3 = $this->input->post('check3');
-        if($check1 == "on") {
-            $this->modele_thibault->insertCadeau($idVis, $numRap, $this->input->post('cadeau1'));
-        }
-        if($check2 == "on") {
-            $this->modele_thibault->insertCadeau($idVis, $numRap, $this->input->post('cadeau2'));
-        }
-        if($check3 == "on") {
-            $this->modele_thibault->insertCadeau($idVis, $numRap, $this->input->post('cadeau3'));
-        }
-        /* --------------------------------------------------- */        
+        /* --------------------------------------------------- */      
 
         if($erreur == false){
             $this->modele_thibault->insertNouveauRapport($idVis, $numRap, $idPra, $dateRap, $bilanRap, $motifRap, $idPraRplc);
@@ -320,6 +303,23 @@ class c_compte extends CI_Controller{
 
             $this->load->view('connecte/compte-rendu/v_nouveau', $data);
         }
+
+        /* --------------------------------------------------- */
+        //cadeau effectuer par le visiteur
+        /* --------------------------------------------------- */
+        $check1 = $this->input->post('check1');
+        $check2 = $this->input->post('check2');
+        $check3 = $this->input->post('check3');
+        if($check1 == "on") {
+            $this->modele_thibault->insertCadeau($idVis, $numRap, $this->input->post('cadeau1'));
+        }
+        if($check2 == "on") {
+            $this->modele_thibault->insertCadeau($idVis, $numRap, $this->input->post('cadeau2'));
+        }
+        if($check3 == "on") {
+            $this->modele_thibault->insertCadeau($idVis, $numRap, $this->input->post('cadeau3'));
+        }
+        /* --------------------------------------------------- */  
 
             //Bas
         $this->load->view('connecte/v_bas');
