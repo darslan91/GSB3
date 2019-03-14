@@ -130,15 +130,24 @@ class c_accueil extends CI_Controller{
 		$mdp1 = $this->input->post('mdp1');
 		$mdp2 = $this->input->post('mdp2');
 
-		if($mdp1 != $mdp2){
-			$data['mdp'] = "Mots de passe different";
-			$this->load->view('connecte/v_haut');
-	    	$this->load->view('connecte/v_changementMdp', $data);
-	    	$this->load->view('connecte/v_bas');
+		/* Test Regex */
+		if(preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#', $mdp1)) {
+			if($mdp1 != $mdp2){
+				$data['mdp'] = "Mots de passe different";
+				$this->load->view('connecte/v_haut');
+		    	$this->load->view('connecte/v_changementMdp', $data);
+		    	$this->load->view('connecte/v_bas');
+			}
+			else{
+				$this->modele_connexion->changeMdp($mdp1, $idVis);
+				$this->connecter();
+			}
 		}
 		else{
-			$this->modele_connexion->changeMdp($mdp1, $idVis);
-			$this->connecter();
+			$data['mdp'] = "Le mdp doit contenir 1 minuscule, 1 majuscule, 1 chiffre, 1 caractere special";
+			$this->load->view('connecte/v_haut');
+		    $this->load->view('connecte/v_changementMdp', $data);
+		    $this->load->view('connecte/v_bas');
 		}
 	}
 
