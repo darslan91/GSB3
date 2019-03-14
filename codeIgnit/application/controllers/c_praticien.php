@@ -248,18 +248,11 @@ class c_praticien extends CI_Controller{
 
             $this->modele_deniz->addNewPrat($nom, $prenom, $adresse, $cp, $ville, $notoriete, $speCode);
 
-            echo "Ajout Réussi !!";
+            $this->index(1, 10);
 
         }else{
             echo "Erreur, un des champs est mal remplis";
         }
-
-            //Haut + menu
-        $this->load->view('connecte/v_haut');
-        $this->load->view('connecte/v_menu');
-       
-            //Bas
-        $this->load->view('connecte/v_bas');
     }
 /* --------------------------------------------------- */
 
