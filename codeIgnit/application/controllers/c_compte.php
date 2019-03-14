@@ -406,15 +406,28 @@ class c_compte extends CI_Controller{
             //Corps
         $data['detail'] = $this->modele_thibault->getLaVisite($id, $idVis);
         $detail = $data['detail'];
+
+        $data['cadeau'] = $this->modele_thibault->cadeauExist($id, $idVis);
+        $cadeau = $data['cadeau'];
+
+        $cadeauExist = count($data['cadeau']);
+
         foreach ($detail as $key) {
             $rplc = $key->num_rplc;
         }
         if($rplc == 0 || $rplc == null){
             $this->load->view('connecte/compte-rendu/v_tableau-detail', $data);
+
+            if($cadeauExist != 0){
+                $this->load->view('connecte/compte-rendu/v_cadeau-medic', $data);
+            }
         }
         else{
             $data['getInfoRemplace'] = $this->modele_thibault->getInfoRemplace($rplc);
             $this->load->view('connecte/compte-rendu/v_tableau-detail-remplace', $data);
+            if($cadeauExist != 0){
+                $this->load->view('');
+            }
         }
         
             //Bas

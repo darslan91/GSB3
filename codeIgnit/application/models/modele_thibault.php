@@ -207,6 +207,17 @@ class modele_thibault extends CI_Model{
       $this->db->query($req);
     }
 
+      //Récupération des cadeau offert
+    public function cadeauExist($id, $idVis){
+      $req = "SELECT med_nomcommercial, off_qte ".
+             "FROM offrir, medicament ".
+             "WHERE offrir.med_depotlegal = medicament.med_depotlegal ".
+             "AND rap_num = '$id' ".
+             "AND vis_matricule = '$idVis'";
+      $query = $this->db->query($req)->result();
+      return $query;
+    }
+
 /* --------------------------------------------------- */
 
 
